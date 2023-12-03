@@ -1,0 +1,10 @@
+*.log
+*.bak
+*.o
+*.htm
+*.crf
+*.axf
+*.map
+*.dep
+*.json
+
