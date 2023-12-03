@@ -2,7 +2,7 @@
 .\output\gd32f30x_pmu.o: ..\B-DRIVER\Include\gd32f30x_pmu.h
 .\output\gd32f30x_pmu.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\gd32f30x_pmu.o: ..\A-CMSIS\core_cm4.h
-.\output\gd32f30x_pmu.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\gd32f30x_pmu.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\gd32f30x_pmu.o: ..\A-CMSIS\core_cmInstr.h
 .\output\gd32f30x_pmu.o: ..\A-CMSIS\core_cmFunc.h
 .\output\gd32f30x_pmu.o: ..\A-CMSIS\core_cm4_simd.h

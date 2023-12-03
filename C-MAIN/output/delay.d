@@ -3,7 +3,7 @@
 .\output\delay.o: ..\D-CONFIGURATION\sys\sys.h
 .\output\delay.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\delay.o: ..\A-CMSIS\core_cm4.h
-.\output\delay.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\delay.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\delay.o: ..\A-CMSIS\core_cmInstr.h
 .\output\delay.o: ..\A-CMSIS\core_cmFunc.h
 .\output\delay.o: ..\A-CMSIS\core_cm4_simd.h

@@ -1,8 +1,8 @@
 Dependencies for Project 'Project', Target 'GD32F30X_HD': (DO NOT MODIFY !)
-F (..\A-CMSIS\GD32F30x\Source\system_gd32f30x.c)(0x62A6E3C7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\system_gd32f30x.o --omf_browse .\output\system_gd32f30x.crf --depend .\output\system_gd32f30x.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (..\A-CMSIS\GD32F30x\Source\system_gd32f30x.c)(0x62A6E3C7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\system_gd32f30x.o --omf_browse .\output\system_gd32f30x.crf --depend .\output\system_gd32f30x.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -32,12 +32,12 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\A-CMSIS\GD32F30x\Source\ARM\startup_gd32f30x_hd.s)(0x61CC215C)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 523" --pd "GD32F30X_HD SETA 1"--list .\list\startup_gd32f30x_hd.lst --xref -o .\output\startup_gd32f30x_hd.o --depend .\output\startup_gd32f30x_hd.d)
-F (..\B-DRIVER\Source\gd32f30x_adc.c)(0x62FC5E35)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_adc.o --omf_browse .\output\gd32f30x_adc.crf --depend .\output\gd32f30x_adc.d)
+F (..\A-CMSIS\GD32F30x\Source\ARM\startup_gd32f30x_hd.s)(0x61CC215C)(--cpu Cortex-M4.fp -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 523" --pd "GD32F30X_HD SETA 1"--list .\list\startup_gd32f30x_hd.lst --xref -o .\output\startup_gd32f30x_hd.o --depend .\output\startup_gd32f30x_hd.d)
+F (..\B-DRIVER\Source\gd32f30x_adc.c)(0x62FC5E35)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_adc.o --omf_browse .\output\gd32f30x_adc.crf --depend .\output\gd32f30x_adc.d)
 I (..\B-DRIVER\Include\gd32f30x_adc.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -66,11 +66,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_bkp.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_bkp.o --omf_browse .\output\gd32f30x_bkp.crf --depend .\output\gd32f30x_bkp.d)
+F (..\B-DRIVER\Source\gd32f30x_bkp.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_bkp.o --omf_browse .\output\gd32f30x_bkp.crf --depend .\output\gd32f30x_bkp.d)
 I (..\B-DRIVER\Include\gd32f30x_bkp.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -99,11 +99,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_can.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_can.o --omf_browse .\output\gd32f30x_can.crf --depend .\output\gd32f30x_can.d)
+F (..\B-DRIVER\Source\gd32f30x_can.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_can.o --omf_browse .\output\gd32f30x_can.crf --depend .\output\gd32f30x_can.d)
 I (..\B-DRIVER\Include\gd32f30x_can.h)(0x6392DB4B)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -132,12 +132,12 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
-F (..\B-DRIVER\Source\gd32f30x_crc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_crc.o --omf_browse .\output\gd32f30x_crc.crf --depend .\output\gd32f30x_crc.d)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
+F (..\B-DRIVER\Source\gd32f30x_crc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_crc.o --omf_browse .\output\gd32f30x_crc.crf --depend .\output\gd32f30x_crc.d)
 I (..\B-DRIVER\Include\gd32f30x_crc.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -166,11 +166,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_ctc.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_ctc.o --omf_browse .\output\gd32f30x_ctc.crf --depend .\output\gd32f30x_ctc.d)
+F (..\B-DRIVER\Source\gd32f30x_ctc.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_ctc.o --omf_browse .\output\gd32f30x_ctc.crf --depend .\output\gd32f30x_ctc.d)
 I (..\B-DRIVER\Include\gd32f30x_ctc.h)(0x6392DB4B)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -199,11 +199,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_dac.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dac.o --omf_browse .\output\gd32f30x_dac.crf --depend .\output\gd32f30x_dac.d)
+F (..\B-DRIVER\Source\gd32f30x_dac.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dac.o --omf_browse .\output\gd32f30x_dac.crf --depend .\output\gd32f30x_dac.d)
 I (..\B-DRIVER\Include\gd32f30x_dac.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -232,11 +232,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_dbg.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dbg.o --omf_browse .\output\gd32f30x_dbg.crf --depend .\output\gd32f30x_dbg.d)
+F (..\B-DRIVER\Source\gd32f30x_dbg.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dbg.o --omf_browse .\output\gd32f30x_dbg.crf --depend .\output\gd32f30x_dbg.d)
 I (..\B-DRIVER\Include\gd32f30x_dbg.h)(0x62C28B53)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -265,11 +265,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_dma.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dma.o --omf_browse .\output\gd32f30x_dma.crf --depend .\output\gd32f30x_dma.d)
+F (..\B-DRIVER\Source\gd32f30x_dma.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_dma.o --omf_browse .\output\gd32f30x_dma.crf --depend .\output\gd32f30x_dma.d)
 I (..\B-DRIVER\Include\gd32f30x_dma.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -298,12 +298,12 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
-F (..\B-DRIVER\Source\gd32f30x_enet.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_enet.o --omf_browse .\output\gd32f30x_enet.crf --depend .\output\gd32f30x_enet.d)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
+F (..\B-DRIVER\Source\gd32f30x_enet.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_enet.o --omf_browse .\output\gd32f30x_enet.crf --depend .\output\gd32f30x_enet.d)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -332,12 +332,12 @@ I (..\B-DRIVER\Include\gd32f30x_usart.h)(0x63ABB35A)
 I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
-F (..\B-DRIVER\Source\gd32f30x_exmc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_exmc.o --omf_browse .\output\gd32f30x_exmc.crf --depend .\output\gd32f30x_exmc.d)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdlib.h)(0x57F606B8)
+F (..\B-DRIVER\Source\gd32f30x_exmc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_exmc.o --omf_browse .\output\gd32f30x_exmc.crf --depend .\output\gd32f30x_exmc.d)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -366,11 +366,11 @@ I (..\B-DRIVER\Include\gd32f30x_usart.h)(0x63ABB35A)
 I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
-F (..\B-DRIVER\Source\gd32f30x_exti.c)(0x63ABB35A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_exti.o --omf_browse .\output\gd32f30x_exti.crf --depend .\output\gd32f30x_exti.d)
+F (..\B-DRIVER\Source\gd32f30x_exti.c)(0x63ABB35A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_exti.o --omf_browse .\output\gd32f30x_exti.crf --depend .\output\gd32f30x_exti.d)
 I (..\B-DRIVER\Include\gd32f30x_exti.h)(0x63ABB35A)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -399,11 +399,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_fmc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_fmc.o --omf_browse .\output\gd32f30x_fmc.crf --depend .\output\gd32f30x_fmc.d)
+F (..\B-DRIVER\Source\gd32f30x_fmc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_fmc.o --omf_browse .\output\gd32f30x_fmc.crf --depend .\output\gd32f30x_fmc.d)
 I (..\B-DRIVER\Include\gd32f30x_fmc.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -432,11 +432,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_fwdgt.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_fwdgt.o --omf_browse .\output\gd32f30x_fwdgt.crf --depend .\output\gd32f30x_fwdgt.d)
+F (..\B-DRIVER\Source\gd32f30x_fwdgt.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_fwdgt.o --omf_browse .\output\gd32f30x_fwdgt.crf --depend .\output\gd32f30x_fwdgt.d)
 I (..\B-DRIVER\Include\gd32f30x_fwdgt.h)(0x62C28B52)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -465,11 +465,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_gpio.c)(0x6559FE08)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_gpio.o --omf_browse .\output\gd32f30x_gpio.crf --depend .\output\gd32f30x_gpio.d)
+F (..\B-DRIVER\Source\gd32f30x_gpio.c)(0x6559FE08)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_gpio.o --omf_browse .\output\gd32f30x_gpio.crf --depend .\output\gd32f30x_gpio.d)
 I (..\B-DRIVER\Include\gd32f30x_gpio.h)(0x6559AC68)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -498,11 +498,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_i2c.c)(0x62F4B104)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_i2c.o --omf_browse .\output\gd32f30x_i2c.crf --depend .\output\gd32f30x_i2c.d)
+F (..\B-DRIVER\Source\gd32f30x_i2c.c)(0x62F4B104)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_i2c.o --omf_browse .\output\gd32f30x_i2c.crf --depend .\output\gd32f30x_i2c.d)
 I (..\B-DRIVER\Include\gd32f30x_i2c.h)(0x62C28B52)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -531,11 +531,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_misc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_misc.o --omf_browse .\output\gd32f30x_misc.crf --depend .\output\gd32f30x_misc.d)
+F (..\B-DRIVER\Source\gd32f30x_misc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_misc.o --omf_browse .\output\gd32f30x_misc.crf --depend .\output\gd32f30x_misc.d)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -564,11 +564,11 @@ I (..\B-DRIVER\Include\gd32f30x_usart.h)(0x63ABB35A)
 I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_pmu.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_pmu.o --omf_browse .\output\gd32f30x_pmu.crf --depend .\output\gd32f30x_pmu.d)
+F (..\B-DRIVER\Source\gd32f30x_pmu.c)(0x62C28B53)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_pmu.o --omf_browse .\output\gd32f30x_pmu.crf --depend .\output\gd32f30x_pmu.d)
 I (..\B-DRIVER\Include\gd32f30x_pmu.h)(0x62C28B53)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -597,11 +597,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_rcu.c)(0x655A07BA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_rcu.o --omf_browse .\output\gd32f30x_rcu.crf --depend .\output\gd32f30x_rcu.d)
+F (..\B-DRIVER\Source\gd32f30x_rcu.c)(0x655A07BA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_rcu.o --omf_browse .\output\gd32f30x_rcu.crf --depend .\output\gd32f30x_rcu.d)
 I (..\B-DRIVER\Include\gd32f30x_rcu.h)(0x62A6E3C7)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -630,11 +630,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_rtc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_rtc.o --omf_browse .\output\gd32f30x_rtc.crf --depend .\output\gd32f30x_rtc.d)
+F (..\B-DRIVER\Source\gd32f30x_rtc.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_rtc.o --omf_browse .\output\gd32f30x_rtc.crf --depend .\output\gd32f30x_rtc.d)
 I (..\B-DRIVER\Include\gd32f30x_rtc.h)(0x61CC215B)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -663,11 +663,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_sdio.c)(0x6561DBA9)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_sdio.o --omf_browse .\output\gd32f30x_sdio.crf --depend .\output\gd32f30x_sdio.d)
+F (..\B-DRIVER\Source\gd32f30x_sdio.c)(0x6561DBA9)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_sdio.o --omf_browse .\output\gd32f30x_sdio.crf --depend .\output\gd32f30x_sdio.d)
 I (..\B-DRIVER\Include\gd32f30x_sdio.h)(0x61CC215C)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -696,11 +696,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_spi.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_spi.o --omf_browse .\output\gd32f30x_spi.crf --depend .\output\gd32f30x_spi.d)
+F (..\B-DRIVER\Source\gd32f30x_spi.c)(0x6392DB4B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_spi.o --omf_browse .\output\gd32f30x_spi.crf --depend .\output\gd32f30x_spi.d)
 I (..\B-DRIVER\Include\gd32f30x_spi.h)(0x62F9F4F9)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -729,11 +729,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_timer.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_timer.o --omf_browse .\output\gd32f30x_timer.crf --depend .\output\gd32f30x_timer.d)
+F (..\B-DRIVER\Source\gd32f30x_timer.c)(0x61CC215B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_timer.o --omf_browse .\output\gd32f30x_timer.crf --depend .\output\gd32f30x_timer.d)
 I (..\B-DRIVER\Include\gd32f30x_timer.h)(0x655E185E)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -762,11 +762,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_usart.c)(0x63ABB35A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_usart.o --omf_browse .\output\gd32f30x_usart.crf --depend .\output\gd32f30x_usart.d)
+F (..\B-DRIVER\Source\gd32f30x_usart.c)(0x63ABB35A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_usart.o --omf_browse .\output\gd32f30x_usart.crf --depend .\output\gd32f30x_usart.d)
 I (..\B-DRIVER\Include\gd32f30x_usart.h)(0x63ABB35A)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -795,11 +795,11 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\B-DRIVER\Source\gd32f30x_wwdgt.c)(0x62A6E3C7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_wwdgt.o --omf_browse .\output\gd32f30x_wwdgt.crf --depend .\output\gd32f30x_wwdgt.d)
+F (..\B-DRIVER\Source\gd32f30x_wwdgt.c)(0x62A6E3C7)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_wwdgt.o --omf_browse .\output\gd32f30x_wwdgt.crf --depend .\output\gd32f30x_wwdgt.d)
 I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -828,10 +828,10 @@ I (..\B-DRIVER\Include\gd32f30x_usart.h)(0x63ABB35A)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (.\main.c)(0x6563206F)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\main_1.o --omf_browse .\output\main_1.crf --depend .\output\main_1.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (.\main.c)(0x65689D2B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\main.o --omf_browse .\output\main.crf --depend .\output\main.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -868,11 +868,11 @@ I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
 I (..\D-CONFIGURATION\TIME\TIME_Management.h)(0x655F7D19)
 I (..\D-CONFIGURATION\Communication\SDIO.h)(0x65632129)
 I (..\E-APPLICATION\SD_Card.h)(0x656322A6)
-F (.\gd32f30x_it.c)(0x6559F919)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_it.o --omf_browse .\output\gd32f30x_it.crf --depend .\output\gd32f30x_it.d)
+F (.\gd32f30x_it.c)(0x6559F919)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gd32f30x_it.o --omf_browse .\output\gd32f30x_it.crf --depend .\output\gd32f30x_it.d)
 I (gd32f30x_it.h)(0x61CC215B)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -904,10 +904,10 @@ I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
 I (main.h)(0x6559F923)
 I (systick.h)(0x61CC215B)
-F (.\systick.c)(0x61CC215A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\systick.o --omf_browse .\output\systick.crf --depend .\output\systick.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (.\systick.c)(0x61CC215A)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\systick.o --omf_browse .\output\systick.crf --depend .\output\systick.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -938,11 +938,11 @@ I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
 I (systick.h)(0x61CC215B)
-F (..\D-CONFIGURATION\GPIO\GPIO.c)(0x65633E2D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gpio.o --omf_browse .\output\gpio.crf --depend .\output\gpio.d)
+F (..\D-CONFIGURATION\GPIO\GPIO.c)(0x65633E2D)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\gpio.o --omf_browse .\output\gpio.crf --depend .\output\gpio.d)
 I (..\B-DRIVER\Include\gd32f30x_timer.h)(0x655E185E)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -975,11 +975,11 @@ I (..\D-CONFIGURATION\Configur.h)(0x655A0711)
 I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
-F (..\D-CONFIGURATION\sys\sys.c)(0x653E76BB)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sys.o --omf_browse .\output\sys.crf --depend .\output\sys.d)
+F (..\D-CONFIGURATION\sys\sys.c)(0x653E76BB)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sys.o --omf_browse .\output\sys.crf --depend .\output\sys.d)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1009,10 +1009,10 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\D-CONFIGURATION\TIME\TIME_Management.c)(0x655F7F96)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\time_management.o --omf_browse .\output\time_management.crf --depend .\output\time_management.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (..\D-CONFIGURATION\TIME\TIME_Management.c)(0x655F7F96)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\time_management.o --omf_browse .\output\time_management.crf --depend .\output\time_management.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1043,12 +1043,12 @@ I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
 I (..\D-CONFIGURATION\TIME\TIME_Management.h)(0x655F7D19)
-F (..\D-CONFIGURATION\TIME\delay.c)(0x6559A6AA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\delay.o --omf_browse .\output\delay.crf --depend .\output\delay.d)
+F (..\D-CONFIGURATION\TIME\delay.c)(0x6559A6AA)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\delay.o --omf_browse .\output\delay.crf --depend .\output\delay.d)
 I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1078,10 +1078,10 @@ I (..\B-DRIVER\Include\gd32f30x_wwdgt.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
-F (..\D-CONFIGURATION\Communication\SPI.c)(0x6559FD5B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\spi.o --omf_browse .\output\spi.crf --depend .\output\spi.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (..\D-CONFIGURATION\Communication\SPI.c)(0x6559FD5B)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\spi.o --omf_browse .\output\spi.crf --depend .\output\spi.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1115,11 +1115,11 @@ I (..\D-CONFIGURATION\Communication\SPI.h)(0x6559A1FC)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
 I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
-F (..\D-CONFIGURATION\Communication\usart.c)(0x6559A1C4)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\usart.o --omf_browse .\output\usart.crf --depend .\output\usart.d)
+F (..\D-CONFIGURATION\Communication\usart.c)(0x6559A1C4)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\usart.o --omf_browse .\output\usart.crf --depend .\output\usart.d)
 I (..\D-CONFIGURATION\Configur.h)(0x655A0711)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1152,10 +1152,10 @@ I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
 I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
-F (..\D-CONFIGURATION\Communication\SDIO.c)(0x65633F1C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sdio.o --omf_browse .\output\sdio.crf --depend .\output\sdio.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (..\D-CONFIGURATION\Communication\SDIO.c)(0x65633F1C)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sdio.o --omf_browse .\output\sdio.crf --depend .\output\sdio.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1190,11 +1190,11 @@ I (..\D-CONFIGURATION\Configur.h)(0x655A0711)
 I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
-F (..\E-APPLICATION\LED.c)(0x655E17F9)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\led_1.o --omf_browse .\output\led_1.crf --depend .\output\led_1.d)
+F (..\E-APPLICATION\LED.c)(0x655E17F9)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\led.o --omf_browse .\output\led.crf --depend .\output\led.d)
 I (..\E-APPLICATION\LED.h)(0x655E174F)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1225,10 +1225,10 @@ I (..\B-DRIVER\Include\gd32f30x_misc.h)(0x655E1AFC)
 I (..\B-DRIVER\Include\gd32f30x_enet.h)(0x62A6E3C7)
 I (..\B-DRIVER\Include\gd32f30x_exmc.h)(0x61CC215C)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
-F (..\E-APPLICATION\SD_Card.c)(0x6563233F)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-ID:\MDK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-ID:\MDK\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sd_card.o --omf_browse .\output\sd_card.crf --depend .\output\sd_card.d)
-I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x6559A587)
+F (..\E-APPLICATION\SD_Card.c)(0x6563233F)(-c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\ -I ..\A-CMSIS\GD32F30x\Include -I ..\B-DRIVER\Include -I ..\A-CMSIS -I ..\D-CONFIGURATION\GPIO -I ..\D-CONFIGURATION -I ..\D-CONFIGURATION\Communication -I ..\D-CONFIGURATION\TIME -I ..\D-CONFIGURATION\sys -I ..\E-APPLICATION-I.\RTE\_GD32F30X_HD-IE:\MDK5\v5.23\ARM\PACK\GigaDevice\GD32F30x_DFP\2.2.0\Device\Include-IE:\MDK5\v5.23\ARM\CMSIS\Include-D__UVISION_VERSION="523" -DGD32F30X_HD -DUSE_STDPERIPH_DRIVER -DGD32F30X_HD-o .\output\sd_card.o --omf_browse .\output\sd_card.crf --depend .\output\sd_card.d)
+I (..\A-CMSIS\GD32F30x\Include\gd32f30x.h)(0x656B14BC)
 I (..\A-CMSIS\core_cm4.h)(0x61CC215C)
-I (D:\MDK\ARM\ARMCC\include\stdint.h)(0x6559A57C)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\stdint.h)(0x57F606B8)
 I (..\A-CMSIS\core_cmInstr.h)(0x61CC215C)
 I (..\A-CMSIS\core_cmFunc.h)(0x61CC215C)
 I (..\A-CMSIS\core_cm4_simd.h)(0x61CC215C)
@@ -1264,4 +1264,4 @@ I (..\D-CONFIGURATION\TIME\delay.h)(0x653E76BB)
 I (..\D-CONFIGURATION\sys\sys.h)(0x65599F06)
 I (..\D-CONFIGURATION\GPIO\GPIO.h)(0x6560B6B3)
 I (..\E-APPLICATION\SD_Card.h)(0x656322A6)
-I (D:\MDK\ARM\ARMCC\include\string.h)(0x57F606B8)
+I (E:\MDK5\v5.23\ARM\ARMCC\include\string.h)(0x57F606B8)

@@ -1,7 +1,7 @@
 .\output\sdio.o: ..\D-CONFIGURATION\Communication\SDIO.c
 .\output\sdio.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\sdio.o: ..\A-CMSIS\core_cm4.h
-.\output\sdio.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\sdio.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\sdio.o: ..\A-CMSIS\core_cmInstr.h
 .\output\sdio.o: ..\A-CMSIS\core_cmFunc.h
 .\output\sdio.o: ..\A-CMSIS\core_cm4_simd.h

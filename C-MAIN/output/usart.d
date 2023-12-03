@@ -2,7 +2,7 @@
 .\output\usart.o: ..\D-CONFIGURATION\Configur.h
 .\output\usart.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\usart.o: ..\A-CMSIS\core_cm4.h
-.\output\usart.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\usart.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\usart.o: ..\A-CMSIS\core_cmInstr.h
 .\output\usart.o: ..\A-CMSIS\core_cmFunc.h
 .\output\usart.o: ..\A-CMSIS\core_cm4_simd.h

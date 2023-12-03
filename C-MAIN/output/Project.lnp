@@ -25,7 +25,7 @@
 ".\output\gd32f30x_timer.o"
 ".\output\gd32f30x_usart.o"
 ".\output\gd32f30x_wwdgt.o"
-".\output\main_1.o"
+".\output\main.o"
 ".\output\gd32f30x_it.o"
 ".\output\systick.o"
 ".\output\gpio.o"
@@ -35,7 +35,7 @@
 ".\output\spi.o"
 ".\output\usart.o"
 ".\output\sdio.o"
-".\output\led_1.o"
+".\output\led.o"
 ".\output\sd_card.o"
 --library_type=microlib --strict --scatter ".\output\Project.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols

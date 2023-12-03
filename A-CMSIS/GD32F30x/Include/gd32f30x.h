@@ -303,6 +303,11 @@ typedef enum {ERROR = 0, SUCCESS = !ERROR} ErrStatus;
 #define BITS(start, end)             ((0xFFFFFFFFUL << (start)) & (0xFFFFFFFFUL >> (31U - (uint32_t)(end))))
 #define GET_BITS(regval, start, end) (((regval) & BITS((start),(end))) >> (start))
 
+/* my set 2023Äê12ÔÂ2ÈÕ*/
+#define u8 uint8_t
+#define u16 uint16_t
+#define u32 uint32_t
+
 /* main flash and SRAM memory map */
 #define FLASH_BASE            ((uint32_t)0x08000000U)        /*!< main FLASH base address          */
 #define SRAM_BASE             ((uint32_t)0x20000000U)        /*!< SRAM0 base address               */

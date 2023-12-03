@@ -2,7 +2,7 @@
 .\output\gd32f30x_misc.o: ..\B-DRIVER\Include\gd32f30x_misc.h
 .\output\gd32f30x_misc.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\gd32f30x_misc.o: ..\A-CMSIS\core_cm4.h
-.\output\gd32f30x_misc.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\gd32f30x_misc.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\gd32f30x_misc.o: ..\A-CMSIS\core_cmInstr.h
 .\output\gd32f30x_misc.o: ..\A-CMSIS\core_cmFunc.h
 .\output\gd32f30x_misc.o: ..\A-CMSIS\core_cm4_simd.h

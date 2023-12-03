@@ -1,7 +1,7 @@
 .\output\systick.o: systick.c
 .\output\systick.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\systick.o: ..\A-CMSIS\core_cm4.h
-.\output\systick.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\systick.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\systick.o: ..\A-CMSIS\core_cmInstr.h
 .\output\systick.o: ..\A-CMSIS\core_cmFunc.h
 .\output\systick.o: ..\A-CMSIS\core_cm4_simd.h

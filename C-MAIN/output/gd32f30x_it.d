@@ -2,7 +2,7 @@
 .\output\gd32f30x_it.o: gd32f30x_it.h
 .\output\gd32f30x_it.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\gd32f30x_it.o: ..\A-CMSIS\core_cm4.h
-.\output\gd32f30x_it.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\gd32f30x_it.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\gd32f30x_it.o: ..\A-CMSIS\core_cmInstr.h
 .\output\gd32f30x_it.o: ..\A-CMSIS\core_cmFunc.h
 .\output\gd32f30x_it.o: ..\A-CMSIS\core_cm4_simd.h

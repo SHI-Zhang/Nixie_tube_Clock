@@ -1,7 +1,7 @@
 .\output\time_management.o: ..\D-CONFIGURATION\TIME\TIME_Management.c
 .\output\time_management.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\time_management.o: ..\A-CMSIS\core_cm4.h
-.\output\time_management.o: D:\MDK\ARM\ARMCC\Bin\..\include\stdint.h
+.\output\time_management.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
 .\output\time_management.o: ..\A-CMSIS\core_cmInstr.h
 .\output\time_management.o: ..\A-CMSIS\core_cmFunc.h
 .\output\time_management.o: ..\A-CMSIS\core_cm4_simd.h
