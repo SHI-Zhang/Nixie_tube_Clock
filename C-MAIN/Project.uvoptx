@@ -155,50 +155,66 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>398</LineNumber>
+          <LineNumber>113</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218612</Address>
+          <Address>134223744</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>I:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\STANDARD_ENGINERING_GD32_PRJ\E-APPLICATION\SD_Card.c</Filename>
+          <Filename>K:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\Nixie_tube_Clock\C-MAIN\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../E-APPLICATION/SD_Card.c\398</Expression>
+          <Expression>\\Project\main.c\113</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>404</LineNumber>
+          <LineNumber>119</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218622</Address>
+          <Address>134223750</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>I:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\STANDARD_ENGINERING_GD32_PRJ\E-APPLICATION\SD_Card.c</Filename>
+          <Filename>K:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\Nixie_tube_Clock\C-MAIN\main.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../E-APPLICATION/SD_Card.c\404</Expression>
+          <Expression>\\Project\main.c\119</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>458</LineNumber>
+          <LineNumber>1168</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134218792</Address>
+          <Address>134222482</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>I:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\STANDARD_ENGINERING_GD32_PRJ\E-APPLICATION\SD_Card.c</Filename>
+          <Filename>K:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\Nixie_tube_Clock\E-APPLICATION\SD_Card.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Project\../E-APPLICATION/SD_Card.c\458</Expression>
+          <Expression>\\Project\../E-APPLICATION/SD_Card.c\1168</Expression>
+        </Bp>
+        <Bp>
+          <Number>3</Number>
+          <Type>0</Type>
+          <LineNumber>1170</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134222504</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>K:\STUDY-鍒昏嫤瀛︿範鍖?鑷闃舵\宓屽叆寮忓崟鐗囨満\Nixie_tube_Clock\E-APPLICATION\SD_Card.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Project\../E-APPLICATION/SD_Card.c\1170</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -211,6 +227,16 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>g_Second</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>cardtype</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>sd_cid</ItemText>
         </Ww>
       </WatchWindow1>
       <Tracepoint>
@@ -584,7 +610,7 @@
 
   <Group>
     <GroupName>C-MAIN</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -745,6 +771,30 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\E-APPLICATION\SD_Card.c</PathWithFileName>
       <FilenameWithoutPath>SD_Card.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>39</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\E-APPLICATION\LCD.c</PathWithFileName>
+      <FilenameWithoutPath>LCD.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>5</GroupNumber>
+      <FileNumber>40</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\E-APPLICATION\LCD_Display.c</PathWithFileName>
+      <FilenameWithoutPath>LCD_Display.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

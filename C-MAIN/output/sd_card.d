@@ -1,4 +1,5 @@
 .\output\sd_card.o: ..\E-APPLICATION\SD_Card.c
+.\output\sd_card.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdio.h
 .\output\sd_card.o: ..\A-CMSIS\GD32F30x\Include\gd32f30x.h
 .\output\sd_card.o: ..\A-CMSIS\core_cm4.h
 .\output\sd_card.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdint.h
@@ -39,3 +40,4 @@
 .\output\sd_card.o: ..\D-CONFIGURATION\GPIO\GPIO.h
 .\output\sd_card.o: ..\E-APPLICATION\SD_Card.h
 .\output\sd_card.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\string.h
+.\output\sd_card.o: ..\E-APPLICATION\LCD.h

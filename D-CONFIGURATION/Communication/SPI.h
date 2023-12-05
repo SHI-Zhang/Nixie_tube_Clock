@@ -42,7 +42,7 @@
  
  /*~~~~~~~~~~~~~~~~~~~~~~~~~  DECLARE FUNCTION BEGIN   ~~~~~~~~~~~~~~~~~~~~~~~~*/
   u8 SPI_MY_Init(void);
-  void SPI1_SEND_Byte(u8 data_byte);
+  void SPI0_SEND_Byte(u8 data_byte);
 //  void SPI1_SEND_Word(u16 data_word);
  void DMA_SPI1_Init(u32 memory_Adress,u16 buffer_size);
  /*-------------------------  DECLARE FUNCTION  END   -------------------------*/

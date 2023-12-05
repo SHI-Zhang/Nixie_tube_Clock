@@ -30,7 +30,7 @@
 #ifndef __PARAMETER_H
 #define __PARAMETER_H
  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  #INCLUDE BEGIN   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
- #include "stm32f10x.h"
+ #include "gd32f30x.h"
  #include <delay.h>
 
  /*-----------------------------  #INCLUDE   END   ----------------------------*/
@@ -59,20 +59,7 @@
 #endif	/*_0_96_OLED_DISPALY*/
 
 
-#ifdef _1_47_IPS_LCD
-	#define LCD_Display_Row 172
-	#define LCD_Display_Collow 320
 
-	#define LCD_Display_Buffer_Row 10
-	#define LCD_Display_Buffer_Collow 320
-	
-//	#define _Touchpad_Mode
-//	#define _Mouse_Mode
-	#define _Keypad_Mode
-//	#define _Encoder_Mode
-//	#define _Button_Mode
-	
-#endif	/*_1_47_IPS_LCD*/
 
 #ifdef _WIFI_Function
 	#define USART1_MAX_RECV_LEN 500
@@ -108,7 +95,7 @@
  
  
  /*~~~~~~~~~~~~~~~~~~~~~  REPEAT DECLARE VARIABLE BEGIN   ~~~~~~~~~~~~~~~~~~~~~*/
- extern GPIO_InitTypeDef GPIO_InitStruct;
+ extern GPIO_InitTypeDef_GD32 GPIO_InitStruct;
  extern uint16_t power;
  extern uint16_t dir ;
  extern struct PIN_Var YELLOW_PIN;

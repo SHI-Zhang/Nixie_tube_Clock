@@ -36,6 +36,11 @@
 .\output\main.o: ..\D-CONFIGURATION\sys\sys.h
 .\output\main.o: ..\D-CONFIGURATION\Configur.h
 .\output\main.o: ..\D-CONFIGURATION\GPIO\GPIO.h
+.\output\main.o: E:\MDK5\v5.23\ARM\ARMCC\Bin\..\include\stdio.h
+.\output\main.o: ..\D-CONFIGURATION\Communication\SPI.h
+.\output\main.o: ..\E-APPLICATION\LCD.h
+.\output\main.o: ..\E-APPLICATION\LCD_Display.h
+.\output\main.o: ..\E-APPLICATION\parameter.h
 .\output\main.o: ..\D-CONFIGURATION\TIME\TIME_Management.h
 .\output\main.o: ..\D-CONFIGURATION\Communication\SDIO.h
 .\output\main.o: ..\E-APPLICATION\SD_Card.h

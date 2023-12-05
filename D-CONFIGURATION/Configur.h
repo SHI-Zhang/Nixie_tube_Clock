@@ -45,10 +45,10 @@
  
  //#define _Remote_Function
  //#define _0_96_OLED_DISPALY
-// #define _1_47_IPS_LCD
+ #define _1_47_IPS_LCD
  
 // #define _WIFI_Function
-
+ #define _SD_CARD  
 // #define _LVGL_GUI
  /*-------功能器件选择结束---------*/
 
@@ -141,18 +141,25 @@
  //LCD & OLED
 #ifdef _1_47_IPS_LCD
  extern u8 USE_HORIZONTAL;
- extern const unsigned char ascii_1206[][12];
- extern const unsigned char ascii_1608[][16];
- extern const unsigned char ascii_2412[][48];
- extern const unsigned char ascii_3216[][64];
- extern u16 IPS_LCD_Cahe_Data[10][320];			//用于显存
- extern const unsigned char Stone_Ficture[1250];
- extern const unsigned char Sea_Ficture[300];
- extern const unsigned char Grass_Ficture[25*12*2];
+// extern const unsigned char ascii_1206[][12];
+// extern const unsigned char ascii_1608[][16];
+// extern const unsigned char ascii_2412[][48];
+// extern const unsigned char ascii_3216[][64];
+//////////// extern u16 IPS_LCD_Cahe_Data[10][320];			//用于显存
+//////////// extern const unsigned char Stone_Ficture[1250];
+//////////// extern const unsigned char Sea_Ficture[300];
+//////////// extern const unsigned char Grass_Ficture[25*12*2];
 // extern const unsigned char gImage_3445[35200];
  //图标
  extern u8 Wifi_Line[];
  extern u8 Wifi_no_Line[];
+ 
+ 
+ 
+ 
+
+ 
+ 
  
 #endif	/*_1_47_IPS_LCD*/
  /*---------------------  REPEAT DECLARE  VARIABLE  END   ---------------------*/

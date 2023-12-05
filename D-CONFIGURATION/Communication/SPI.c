@@ -57,21 +57,20 @@
  ********************************************************************/
  u8 SPI_MY_Init(void)
  {
+	 
 	spi_parameter_struct SPI_InitStruct;
 	// 2 使能SPI1时钟
-//	RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE); //使能 SPI1 时钟
 	 rcu_periph_clock_enable(RCU_SPI0);
 	// 3 初始化spi结构体变量
-	 SPI_InitStruct.device_mode=SPI_MASTER;		//设置 SPI 工作模式，设置为主模式
-	SPI_InitStruct.device_mode = SPI_TRANSMODE_FULLDUPLEX;   //设置 SPI 单向或者双向的数据模式
+	SPI_InitStruct.trans_mode=SPI_TRANSMODE_FULLDUPLEX;
+	SPI_InitStruct.device_mode=SPI_MASTER;		//设置 SPI 工作模式，设置为主模式
 	SPI_InitStruct.frame_size = SPI_FRAMESIZE_8BIT;           //设置 SPI 的数据大小:SPI 发送接收 8 位帧结构
+	 /*//串行同步时钟的第二个跳变沿（上升或下降）数据被采样*/
 	SPI_InitStruct.clock_polarity_phase = SPI_CK_PL_HIGH_PH_2EDGE;             //串行同步时钟的空闲状态为高电平
-             //串行同步时钟的第二个跳变沿（上升或下降）数据被采样
 	SPI_InitStruct.nss = SPI_NSS_SOFT;               //（使用 SSI 位）管理:内部 NSS 信号有 SSI 位控制
-	SPI_InitStruct.prescale = SPI_PSC_2; //定义波特率预分频的值:波特率预分频值为 256
+	SPI_InitStruct.prescale = SPI_PSC_4; //定义波特率预分频的值:波特率预分频值为 256
 	SPI_InitStruct.endian = SPI_ENDIAN_MSB;           //指定数据传输从 MSB 位还是 LSB 位开始:数据传输从 MSB 位开始
-	SPI_InitStruct.prescale = SPI_PSC_2;
-	spi_init(SPI1, &SPI_InitStruct);    //
+	spi_init(SPI0, &SPI_InitStruct);    //
 	// 5 使能SPI
 	spi_enable(SPI0);
 	return 0; 

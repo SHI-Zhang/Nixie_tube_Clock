@@ -194,3 +194,9 @@ void MY_UART_Send_2(u8 *Msg)
 }
 #endif /*_WIFI_Function*/ 
 
+// void printf()
+// {
+
+// }
+
+

@@ -62,12 +62,12 @@
 #define SPI0_MOSI_pin GPIOA, GPIO_PIN_7   // PA7
 #define LCD_RES_pin GPIOC, GPIO_PIN_4			//pc4
 
-#define DATA_ORDER GPIO_SetBits(OLED_D_C_pin)
-#define CMD_ORDER GPIO_ResetBits(OLED_D_C_pin)
-#define CS_H GPIO_SetBits(SPI0_NSS_pin)
-#define CS_L GPIO_ResetBits(SPI0_NSS_pin)
-#define RES_H GPIO_SetBits(LCD_RES_pin)
-#define RES_L GPIO_ResetBits(LCD_RES_pin)
+#define DATA_ORDER gpio_bit_set(OLED_D_C_pin)
+#define CMD_ORDER gpio_bit_reset(OLED_D_C_pin)
+#define CS_H gpio_bit_set(SPI0_NSS_pin)
+#define CS_L gpio_bit_reset(SPI0_NSS_pin)
+#define RES_H gpio_bit_set(LCD_RES_pin)
+#define RES_L gpio_bit_reset(LCD_RES_pin)
 
 //KEY   //1、c9 c8 a9 a8
 #define X_pin GPIOA, GPIO_PIN_1   // PA3

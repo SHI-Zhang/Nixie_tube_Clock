@@ -28,11 +28,13 @@
 /*--------------------------------  说明 结束   -------------------------------*/
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  #INCLUDE BEGIN   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#include <stdio.h>
 #include "gd32f30x.h"
 #include "SDIO.h"
 #include "SD_Card.h"
 #include "string.h"
 #include "sys.h"
+#include "LCD.h"
 /*-----------------------------  #INCLUDE   END   ----------------------------*/
 
 /* card status of R1 definitions */
@@ -111,6 +113,9 @@ static sdio_card_type_enum cardtype = SDIO_STD_CAPACITY_SD_CARD_V1_1; /* SD card
 uint32_t sd_scr[2] = {0, 0};										  /* content of SCR register */
 static uint32_t sd_csd[4] = {0,0,0,0};                                /* content of CSD register */
 static uint32_t sd_cid[4] = {0,0,0,0};                                /* content of CID register */
+static uint16_t sd_rca = 0;     
+sd_card_info_struct sd_cardinfo;                            /* information of SD card */
+static uint32_t transmode = SD_POLLING_MODE;
 /*-------------------------  DECLARE  VARIABLE  END   ------------------------*/
 
 /*~~~~~~~~~~~~~~~~~~~~~  REPEAT DECLARE VARIABLE BEGIN   ~~~~~~~~~~~~~~~~~~~~~*/
@@ -196,7 +201,7 @@ static sd_error_enum r1_error_check(uint8_t cmdindex)
 
 	/*5-get the SDIO response register 0 for checking 获取接收（反馈）寄存器0内的值进行检查*/
 	resp_r1 = sdio_response_get(SDIO_RESPONSE0); // 不明所以
-	if (SD_ALLZERO == resp_r1 & SD_R1_ERROR_BITS)
+	if (SD_ALLZERO == (resp_r1 & SD_R1_ERROR_BITS))
 	{
 		/* no error occurs, return SD_OK */
 		errorstatus = SD_OK;
@@ -419,7 +424,26 @@ static sd_error_enum r6_error_check(uint8_t cmdindex, uint16_t *prca)
 	/* get the SDIO response register 0 for checking */
     response = sdio_response_get(SDIO_RESPONSE0);
 
-	if(prca: a pointer that store the RCA of card)
+	if(SD_ALLZERO==(response&(SD_R6_COM_CRC_ERROR|SD_R6_ILLEGAL_COMMAND|SD_R6_GENERAL_UNKNOWN_ERROR)))
+	{
+		*prca=(u16)(response>>16);
+		return errorstatus;
+	}
+
+	/*if some error occurs ,return the error type*/
+	if(errorstatus&SD_R6_COM_CRC_ERROR)
+	{
+		errorstatus=SD_COM_CRC_ERROR;
+	}
+	else if (errorstatus & SD_R6_ILLEGAL_COMMAND)
+	{
+		errorstatus=SD_ILLEGAL_COMMAND;
+	}
+	else if(errorstatus & SD_R6_GENERAL_UNKNOWN_ERROR)
+	{
+		errorstatus=SD_GENERAL_UNKNOWN_ERROR;
+	}
+	return errorstatus;
 }
 
 /*********************************************************************
@@ -529,7 +553,7 @@ sd_error_enum SD_Power_on(void)
 	/*6-send CMD55(APP_CMD) to indicate next command is application specific command ,
 	为下一步发送CMD41做准备，先发CMD55*/
 	SDIO_Send_Data.index = SD_CMD_APP_CMD;
-	SDIO_Send_Data.argument = 0x00; // SD_STD_CAPACITY;
+	SDIO_Send_Data.argument = (uint32_t)0x0; // SD_STD_CAPACITY;
 	SDIO_Send_Data.response_type = SDIO_RESPONSETYPE_SHORT;
 	SDIO_Send_Data.wait_type = SDIO_WAITTYPE_NO;
 	SDIO_SendCommand(&SDIO_Send_Data); // 内含   sdio_csm_enable();
@@ -596,60 +620,81 @@ sd_error_enum SD_Power_on(void)
  ********************************************************************/
 sd_error_enum SD_Card_init()
 {
-	sd_error_enum errorstatus=SD_OK;
-	u16 temp_rca=0x01;
+	sd_error_enum errorstatus = SD_OK;
+	u16 temp_rca = 0x01;
 	SDIO_SMD_Send_struct SDIO_Send_Data;
-	if(SDIO_POWER_OFF==sdio_power_state_get())			//"sdio_power_state_get"是库中的标准函数，获取sdio的电源装态？？
+	if (SDIO_POWER_OFF == sdio_power_state_get()) //"sdio_power_state_get"是库中的标准函数，获取sdio的电源装态？？
 	{
-		errorstatus=SD_OPERATION_IMPROPER;
+		errorstatus = SD_OPERATION_IMPROPER;
 		return errorstatus;
 	}
 
-
-	 /* the card is not I/O only card */
-	 if(SDIO_SECURE_DIGITAL_IO_COMBO_CARD!=cardtype)
-	 {
+	/* the card is not I/O only card */
+	if (SDIO_SECURE_DIGITAL_IO_COMBO_CARD != cardtype)
+	{
 		/* send CMD2(SD_CMD_ALL_SEND_CID) to get the CID numbers */
-		SDIO_Send_Data.index=SD_CMD_ALL_SEND_CID;
-		SDIO_Send_Data.argument=(uint32_t)0x0;
-		SDIO_Send_Data.response_type=SDIO_RESPONSETYPE_LONG;
+		SDIO_Send_Data.index = SD_CMD_ALL_SEND_CID;
+		SDIO_Send_Data.argument = (uint32_t)0x0;
+		SDIO_Send_Data.response_type = SDIO_RESPONSETYPE_LONG;
 		SDIO_Send_Data.wait_type = SDIO_WAITTYPE_NO;
 		SDIO_SendCommand(&SDIO_Send_Data); // 内含   sdio_csm_enable();
 		/* check if some error occurs */
-		errorstatus=r2_error_check();		//接收cmd2的返回值
+		errorstatus = r2_error_check(); // 接收cmd2的返回值
+		// if (errorstatus != SD_OK)
+		// {
+		// 	return errorstatus;
+		// }
+
+		/* 存储 CID 号码 store the CID numbers */
+		sd_cid[0] = sdio_response_get(SDIO_RESPONSE0);
+		sd_cid[1] = sdio_response_get(SDIO_RESPONSE1);
+		sd_cid[2] = sdio_response_get(SDIO_RESPONSE2);
+		sd_cid[3] = sdio_response_get(SDIO_RESPONSE3);
+	}
+	/* the card is SD memory card or the I/O card has the memory portion */
+	if ((cardtype == SDIO_STD_CAPACITY_SD_CARD_V1_1) || (cardtype == SDIO_STD_CAPACITY_SD_CARD_V2_0) ||
+		(cardtype == SDIO_HIGH_CAPACITY_SD_CARD) || (cardtype == SDIO_SECURE_DIGITAL_IO_CARD))
+	{
+		/* send CMD3(SEND_RELATIVE_ADDR) to ask the card to publish a new relative address (RCA) */
+		SDIO_Send_Data.index = SD_CMD_SEND_RELATIVE_ADDR;
+		SDIO_Send_Data.argument = (uint32_t)0x0;
+		SDIO_Send_Data.response_type = SDIO_RESPONSETYPE_SHORT;
+		SDIO_Send_Data.wait_type = SDIO_WAITTYPE_NO;
+		SDIO_SendCommand(&SDIO_Send_Data); // 内含   sdio_csm_enable();
+		/* check if some error occurs */
+		errorstatus = r6_error_check(SD_CMD_SEND_RELATIVE_ADDR, &temp_rca);
+		if (errorstatus != SD_OK)
+		{
+			return errorstatus;
+		}
+	}
+
+	if(SDIO_SECURE_DIGITAL_IO_CARD!=cardtype)
+	{
+		/* the card is not I/O only card */
+		sd_rca=temp_rca;
+
+		/* send CMD9(SEND_CSD) to get the addressed card's card-specific data (CSD) */
+		SDIO_Send_Data.index = SD_CMD_SEND_CSD;
+		SDIO_Send_Data.argument = (uint32_t)(temp_rca << SD_RCA_SHIFT);
+		SDIO_Send_Data.response_type = SDIO_RESPONSETYPE_LONG;
+		SDIO_Send_Data.wait_type = SDIO_WAITTYPE_NO;
+		SDIO_SendCommand(&SDIO_Send_Data); // 内含   sdio_csm_enable();
+		/* check if some error occurs */
+		errorstatus=r2_error_check();
 		if(errorstatus!=SD_OK)
 		{
 			return errorstatus;
 		}
 
-		/* 存储 CID 号码 store the CID numbers */
-		sd_cid[0]=sdio_response_get(SDIO_RESPONSE0);
-		sd_cid[1]=sdio_response_get(SDIO_RESPONSE1);
-		sd_cid[2]=sdio_response_get(SDIO_RESPONSE2);
-		sd_cid[3]=sdio_response_get(SDIO_RESPONSE3);
-
-		/* the card is SD memory card or the I/O card has the memory portion */
-		if((cardtype==SDIO_STD_CAPACITY_SD_CARD_V1_1)||(cardtype==SDIO_STD_CAPACITY_SD_CARD_V2_0)||\
-		(cardtype==SDIO_HIGH_CAPACITY_SD_CARD)||(cardtype==SDIO_SECURE_DIGITAL_IO_CARD))
-		{
-			/* send CMD3(SEND_RELATIVE_ADDR) to ask the card to publish a new relative address (RCA) */
-			SDIO_Send_Data.index=SD_CMD_SEND_RELATIVE_ADDR;
-			SDIO_Send_Data.argument=(uint32_t)0x0;
-			SDIO_Send_Data.response_type=SDIO_RESPONSETYPE_SHORT;
-			SDIO_Send_Data.wait_type = SDIO_WAITTYPE_NO;
-			SDIO_SendCommand(&SDIO_Send_Data); // 内含   sdio_csm_enable();
-			/* check if some error occurs */
-			errorstatus=r6_error_check(SD_CMD_SEND_RELATIVE_ADDR, &temp_rca);
-			if(errorstatus!=SD_OK)
-			{
-				return errorstatus;
-			}
-		}
-
-	 }
+		/* store the card-specific data (CSD) */
+		sd_csd[0]=sdio_response_get(SDIO_RESPONSE0);
+		sd_csd[1]=sdio_response_get(SDIO_RESPONSE1);
+		sd_csd[2]=sdio_response_get(SDIO_RESPONSE2);
+		sd_csd[3]=sdio_response_get(SDIO_RESPONSE3);
+	}
+	return errorstatus;
 }
-
-
 
 /*********************************************************************
  * @fn       : </函数名>
@@ -677,5 +722,1053 @@ sd_error_enum SD_Init(void)
 	}
 
 	/*4- initialize the card and get CID and CSD of the card */
-	errorstatus=sd_card_init();
+	errorstatus=SD_Card_init();
+	if(SD_OK!=errorstatus)
+	{
+		return errorstatus;
+	}
+
+	/* 配置SDIO外设 configure the SDIO peripheral */    //这里具体是什么意思啊
+	sdio_clock_config(SDIO_SDIOCLKEDGE_RISING,SDIO_CLOCKBYPASS_DISABLE,SDIO_CLOCKPWRSAVE_DISABLE,SD_CLK_DIV_TRANS);
+	sdio_bus_mode_set(SDIO_BUSMODE_1BIT);
+	sdio_hardware_clock_disable();
+
+	return errorstatus;
 }
+
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <brief>
+ * @note     : <get the detailed information of the SD card based on received CID and CSD>
+ * @param    : <param>
+ * @return   : <a pointer that store the detailed card information>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+sd_error_enum sd_card_information_get(sd_card_info_struct *pcardinfo)
+{
+	sd_error_enum status = SD_OK;
+    uint8_t tempbyte = 0;
+    
+    if(NULL == pcardinfo){
+        status = SD_PARAMETER_INVALID;
+        return status;
+    }
+    
+    /* store the card type and RCA */
+    pcardinfo->card_type = cardtype;
+    pcardinfo->card_rca = sd_rca;
+    
+    /* CID byte 0 */
+    tempbyte = (uint8_t)((sd_cid[0] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_cid.mid = tempbyte;
+    
+    /* CID byte 1 */
+    tempbyte = (uint8_t)((sd_cid[0] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_cid.oid = (uint16_t)((uint16_t)tempbyte << 8);
+    
+    /* CID byte 2 */
+    tempbyte = (uint8_t)((sd_cid[0] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_cid.oid |= (uint16_t)tempbyte;
+    
+    /* CID byte 3 */
+    tempbyte = (uint8_t)(sd_cid[0] & SD_MASK_0_7BITS);
+    pcardinfo->card_cid.pnm0 = (uint32_t)((uint32_t)tempbyte << 24);
+    
+    /* CID byte 4 */
+    tempbyte = (uint8_t)((sd_cid[1] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_cid.pnm0 |= (uint32_t)((uint32_t)tempbyte << 16);
+    
+    /* CID byte 5 */
+    tempbyte = (uint8_t)((sd_cid[1] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_cid.pnm0 |= (uint32_t)((uint32_t)tempbyte << 8);
+    
+    /* CID byte 6 */
+    tempbyte = (uint8_t)((sd_cid[1] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_cid.pnm0 |= (uint32_t)(tempbyte);
+    
+    /* CID byte 7 */
+    tempbyte = (uint8_t)(sd_cid[1] & SD_MASK_0_7BITS);
+    pcardinfo->card_cid.pnm1 = tempbyte;
+    
+    /* CID byte 8 */
+    tempbyte = (uint8_t)((sd_cid[2] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_cid.prv = tempbyte;
+    
+    /* CID byte 9 */
+    tempbyte = (uint8_t)((sd_cid[2] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_cid.psn = (uint32_t)((uint32_t)tempbyte << 24);
+    
+    /* CID byte 10 */
+    tempbyte = (uint8_t)((sd_cid[2] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_cid.psn |= (uint32_t)((uint32_t)tempbyte << 16);
+    
+    /* CID byte 11 */
+    tempbyte = (uint8_t)(sd_cid[2] & SD_MASK_0_7BITS);
+    pcardinfo->card_cid.psn |= (uint32_t)tempbyte;
+    
+    /* CID byte 12 */
+    tempbyte = (uint8_t)((sd_cid[3] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_cid.psn |= (uint32_t)tempbyte;
+    
+    /* CID byte 13 */
+    tempbyte = (uint8_t)((sd_cid[3] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_cid.mdt = (uint16_t)((uint16_t)(tempbyte & 0x0F) << 8);
+    
+    /* CID byte 14 */
+    tempbyte = (uint8_t)((sd_cid[3] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_cid.mdt |= (uint16_t)tempbyte;
+    
+    /* CID byte 15 */
+    tempbyte = (uint8_t)(sd_cid[3] & SD_MASK_0_7BITS);
+    pcardinfo->card_cid.cid_crc = (tempbyte & 0xFE) >> 1;
+    
+    /* CSD byte 0 */
+    tempbyte = (uint8_t)((sd_csd[0] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_csd.csd_struct = (tempbyte & 0xC0) >> 6;
+    
+    /* CSD byte 1 */
+    tempbyte = (uint8_t)((sd_csd[0] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_csd.taac = tempbyte;
+    
+    /* CSD byte 2 */
+    tempbyte = (uint8_t)((sd_csd[0] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_csd.nsac = tempbyte;
+    
+    /* CSD byte 3 */
+    tempbyte = (uint8_t)(sd_csd[0] & SD_MASK_0_7BITS);
+    pcardinfo->card_csd.tran_speed = tempbyte;
+    
+    /* CSD byte 4 */
+    tempbyte = (uint8_t)((sd_csd[1] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_csd.ccc = (uint16_t)((uint16_t)tempbyte << 4);
+    
+    /* CSD byte 5 */
+    tempbyte = (uint8_t)((sd_csd[1] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_csd.ccc |= (uint16_t)((uint16_t)(tempbyte & 0xF0) >> 4);
+    pcardinfo->card_csd.read_bl_len = tempbyte & 0x0F;
+    
+    /* CSD byte 6 */
+    tempbyte = (uint8_t)((sd_csd[1] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_csd.read_bl_partial = (tempbyte & 0x80) >> 7;
+    pcardinfo->card_csd.write_blk_misalign = (tempbyte & 0x40) >> 6;
+    pcardinfo->card_csd.read_blk_misalign = (tempbyte & 0x20) >> 5;
+    pcardinfo->card_csd.dsp_imp = (tempbyte & 0x10) >> 4;
+    
+    if((SDIO_STD_CAPACITY_SD_CARD_V1_1 == cardtype) || (SDIO_STD_CAPACITY_SD_CARD_V2_0 == cardtype)){
+        /* card is SDSC card, CSD version 1.0 */
+        pcardinfo->card_csd.c_size = (uint32_t)((uint32_t)(tempbyte & 0x03) << 10);
+        
+        /* CSD byte 7 */
+        tempbyte = (uint8_t)(sd_csd[1] & SD_MASK_0_7BITS);
+        pcardinfo->card_csd.c_size |= (uint32_t)((uint32_t)tempbyte << 2);
+        
+        /* CSD byte 8 */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_24_31BITS) >> 24);
+        pcardinfo->card_csd.c_size |= (uint32_t)((uint32_t)(tempbyte & 0xC0) >> 6);
+        pcardinfo->card_csd.vdd_r_curr_min = (tempbyte & 0x38) >> 3;
+        pcardinfo->card_csd.vdd_r_curr_max = tempbyte & 0x07;
+        
+        /* CSD byte 9 */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_16_23BITS) >> 16);
+        pcardinfo->card_csd.vdd_w_curr_min = (tempbyte & 0xE0) >> 5;
+        pcardinfo->card_csd.vdd_w_curr_max = (tempbyte & 0x1C) >> 2;
+        pcardinfo->card_csd.c_size_mult = (tempbyte & 0x03) << 1;
+        
+        /* CSD byte 10 */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_8_15BITS) >> 8);
+        pcardinfo->card_csd.c_size_mult |= (tempbyte & 0x80) >> 7;
+        
+        /* calculate the card block size and capacity */
+        pcardinfo->card_blocksize = 1 << (pcardinfo->card_csd.read_bl_len);
+        pcardinfo->card_capacity = pcardinfo->card_csd.c_size + 1;
+        pcardinfo->card_capacity *= (1 << (pcardinfo->card_csd.c_size_mult + 2));
+        pcardinfo->card_capacity *= pcardinfo->card_blocksize;
+    }else if(SDIO_HIGH_CAPACITY_SD_CARD == cardtype){
+        /* card is SDHC card, CSD version 2.0 */
+        /* CSD byte 7 */
+        tempbyte = (uint8_t)(sd_csd[1] & SD_MASK_0_7BITS);
+        pcardinfo->card_csd.c_size = (uint32_t)((uint32_t)(tempbyte & 0x3F) << 16);
+        
+        /* CSD byte 8 */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_24_31BITS) >> 24);
+        pcardinfo->card_csd.c_size |= (uint32_t)((uint32_t)tempbyte << 8);
+        
+        /* CSD byte 9 */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_16_23BITS) >> 16);
+        pcardinfo->card_csd.c_size |= (uint32_t)tempbyte;
+        
+        /* calculate the card block size and capacity */
+        pcardinfo->card_blocksize = 512;
+        pcardinfo->card_capacity = (pcardinfo->card_csd.c_size + 1) * 512 *1024;
+    }
+    
+    pcardinfo->card_csd.erase_blk_en = (tempbyte & 0x40) >> 6;
+    pcardinfo->card_csd.sector_size = (tempbyte & 0x3F) << 1;
+    
+    /* CSD byte 11 */
+    tempbyte = (uint8_t)(sd_csd[2] & SD_MASK_0_7BITS);
+    pcardinfo->card_csd.sector_size |= (tempbyte & 0x80) >> 7;
+    pcardinfo->card_csd.wp_grp_size = (tempbyte & 0x7F);
+    
+    /* CSD byte 12 */
+    tempbyte = (uint8_t)((sd_csd[3] & SD_MASK_24_31BITS) >> 24);
+    pcardinfo->card_csd.wp_grp_enable = (tempbyte & 0x80) >> 7;
+    pcardinfo->card_csd.r2w_factor = (tempbyte & 0x1C) >> 2;
+    pcardinfo->card_csd.write_bl_len = (tempbyte & 0x03) << 2;
+    
+    /* CSD byte 13 */
+    tempbyte = (uint8_t)((sd_csd[3] & SD_MASK_16_23BITS) >> 16);
+    pcardinfo->card_csd.write_bl_len |= (tempbyte & 0xC0) >> 6;
+    pcardinfo->card_csd.write_bl_partial = (tempbyte & 0x20) >> 5;
+    
+    /* CSD byte 14 */
+    tempbyte = (uint8_t)((sd_csd[3] & SD_MASK_8_15BITS) >> 8);
+    pcardinfo->card_csd.file_format_grp = (tempbyte & 0x80) >> 7;
+    pcardinfo->card_csd.copy_flag = (tempbyte & 0x40) >> 6;
+    pcardinfo->card_csd.perm_write_protect = (tempbyte & 0x20) >> 5;
+    pcardinfo->card_csd.tmp_write_protect = (tempbyte & 0x10) >> 4;
+    pcardinfo->card_csd.file_format = (tempbyte & 0x0C) >> 2;
+    
+    /* CSD byte 15 */
+    tempbyte = (uint8_t)(sd_csd[3] & SD_MASK_0_7BITS);
+    pcardinfo->card_csd.csd_crc = (tempbyte & 0xFE) >> 1;
+    
+    return status;
+}
+
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <select or deselect a card>
+ * @note     : <note>
+ * @param    : <cardrca: the RCA of a card>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+sd_error_enum sd_card_select_deselect(uint16_t cardrca)
+{
+    sd_error_enum errorstatus = SD_OK;
+    /* send CMD7(SELECT/DESELECT_CARD) to select or deselect the card */
+    sdio_command_response_config(SD_CMD_SELECT_DESELECT_CARD, (uint32_t)(cardrca << SD_RCA_SHIFT), SDIO_RESPONSETYPE_SHORT);
+    sdio_wait_type_set(SDIO_WAITTYPE_NO);
+    sdio_csm_enable();
+    
+    errorstatus = r1_error_check(SD_CMD_SELECT_DESELECT_CARD);
+    return errorstatus;
+}
+
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <brief>
+ * @note     : <get the card status whose response format R1 contains a 32-bit field>
+ * @param    : <param>
+ * @return   : <a pointer that store card status>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+sd_error_enum sd_cardstatus_get(uint32_t *pcardstatus)
+{
+    sd_error_enum errorstatus = SD_OK;
+    if(NULL == pcardstatus){
+        errorstatus = SD_PARAMETER_INVALID;
+        return errorstatus;
+    }
+    
+    /* send CMD13(SEND_STATUS), addressed card sends its status register */
+    sdio_command_response_config(SD_CMD_SEND_STATUS, (uint32_t)sd_rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+    sdio_wait_type_set(SDIO_WAITTYPE_NO);
+    sdio_csm_enable();
+    /* check if some error occurs */
+    errorstatus = r1_error_check(SD_CMD_SEND_STATUS);
+    if(SD_OK != errorstatus){
+        return errorstatus;
+    }
+    
+    *pcardstatus = sdio_response_get(SDIO_RESPONSE0);
+    return errorstatus;
+}
+
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <configure the bus mode>
+ * @note     : <note>
+ * @param    : <the bus mode
+ * 				SDIO_BUSMODE_1BIT: 1-bit SDIO card bus mode
+ * 				SDIO_BUSMODE_4BIT: 4-bit SDIO card bus mode
+ * 				SDIO_BUSMODE_8BIT: 8-bit SDIO card bus mode (MMC only)>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+sd_error_enum sd_bus_mode_config(uint32_t busmode)
+{
+	sd_error_enum status = SD_OK;
+	if (SDIO_MULTIMEDIA_CARD == cardtype)
+	{
+		/* MMC card doesn't support this function */
+		status = SD_FUNCTION_UNSUPPORTED;
+		return status;
+	}
+	else if ((SDIO_STD_CAPACITY_SD_CARD_V1_1 == cardtype) || (SDIO_STD_CAPACITY_SD_CARD_V2_0 == cardtype) ||
+			 (SDIO_HIGH_CAPACITY_SD_CARD == cardtype))
+	{
+		if (SDIO_BUSMODE_8BIT == busmode)
+		{
+			/* 8 bit bus mode doesn't support */
+			status = SD_FUNCTION_UNSUPPORTED;
+			return status;
+		}
+		else if (SDIO_BUSMODE_4BIT == busmode)
+		{
+			/* configure SD bus width and the SDIO */
+			status = sd_bus_width_config(SD_BUS_WIDTH_4BIT);
+			if (SD_OK == status)
+			{
+				sdio_clock_config(SDIO_SDIOCLKEDGE_RISING, SDIO_CLOCKBYPASS_DISABLE,
+								  SDIO_CLOCKPWRSAVE_DISABLE, SD_CLK_DIV_TRANS);
+				sdio_bus_mode_set(busmode);
+				sdio_hardware_clock_disable();
+			}
+		}
+		else if (SDIO_BUSMODE_1BIT == busmode)
+		{
+			/* configure SD bus width and the SDIO */
+			status = sd_bus_width_config(SD_BUS_WIDTH_1BIT);
+			if (SD_OK == status)
+			{
+				sdio_clock_config(SDIO_SDIOCLKEDGE_RISING, SDIO_CLOCKBYPASS_DISABLE,
+								  SDIO_CLOCKPWRSAVE_DISABLE, SD_CLK_DIV_TRANS);
+				sdio_bus_mode_set(busmode);
+				sdio_hardware_clock_disable();
+			}
+		}
+		else
+		{
+			status = SD_PARAMETER_INVALID;
+		}
+	}
+	return status;
+}
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <brief>
+ * @note     : <initialize the card, get the card information, set the bus mode and transfer mode
+ * 				初始化卡，获取卡的信息，设置总线模式和传输模式>
+ * @param    : <param>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+sd_error_enum sd_io_init(void)
+{
+	sd_error_enum errorstatus =SD_OK;
+	u32 cardstate=0;
+	errorstatus=SD_Init();
+	if(SD_OK == errorstatus)
+	{
+		errorstatus = sd_card_information_get(&sd_cardinfo);
+	}
+	if(SD_OK==errorstatus)
+	{
+		errorstatus=sd_card_select_deselect(sd_cardinfo.card_rca);
+	}
+	errorstatus = sd_cardstatus_get(&cardstate);
+
+	if(cardstate & 0x02000000)
+	{
+		//the card is locked !
+	}
+
+	if((SD_OK==errorstatus)&&(!(cardstate&0x02000000)))
+	{
+		/*set bus mode */
+		errorstatus = sd_bus_mode_config(SDIO_BUSMODE_4BIT);
+	}
+
+	if(SD_OK==errorstatus)
+	{
+		/* set data transfer mode */
+		errorstatus =sd_transfer_mode_config(SD_POLLING_MODE);
+	}
+	return errorstatus;
+}
+
+
+
+
+/*********************************************************************
+ * @fn       : <card_info_get/函数名>
+ * @brief    : <brief>
+ * @note     : <get the card information and print it out by USRAT>
+ * @param    : <param>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+void card_info_get(void)
+{
+	u8 sd_spec, sd_spec3, sd_spec4, sd_security;
+	u32 block_count, block_size;
+	u16 temp_ccc;
+	// printf("\r\n Card information");
+	Print_my("\r\n Card information",2);
+
+	sd_spec = (sd_scr[1] & 0x0F000000) >> 24;
+	sd_spec3 = (sd_scr[1] & 0x00008000) >> 15;
+	sd_spec4 = (sd_scr[1] & 0x00000400) >> 10;
+	if (2 == sd_spec)
+	{
+		if (1 == sd_spec3)
+		{
+			if (1 == sd_spec4)
+			{
+				Print_my("\r\n## Card version 4.xx ##",3);
+			}
+			else
+			{
+				Print_my("\r\n## Card version 3.0x ##",3);
+			}
+		}
+		else
+		{
+			Print_my("\r\n## Card version 2.00 ##",3);
+		}
+	}
+	else if (1 == sd_spec)
+	{
+		Print_my("\r\n## Card version 1.10 ##",3);
+	}
+	else if (0 == sd_spec)
+	{
+		Print_my("\r\n## Card version 1.0x ##",3);
+	}
+
+	sd_security = (sd_scr[1] & 0x00700000) >> 20;
+	if (2 == sd_security)
+	{
+		Print_my("\r\n## SDSC card ##",4);
+	}
+	else if (3 == sd_security)
+	{
+		Print_my("\r\n## SDHC card ##",4);
+	}
+	else if (4 == sd_security)
+	{
+		Print_my("\r\n## SDXC card ##",4);
+	}
+
+	block_count = (sd_cardinfo.card_csd.c_size + 1) * 1024;
+	block_size = 512;
+
+	printf("\r\n## Device size is %dKB ##", sd_card_capacity_get());
+	printf("\r\n## Block size is %dB ##", block_size);
+	printf("\r\n## Block count is %d ##", block_count);
+
+	if (sd_cardinfo.card_csd.read_bl_partial)
+	{
+		printf("\r\n## Partial blocks for read allowed ##");
+	}
+	if (sd_cardinfo.card_csd.write_bl_partial)
+	{
+		printf("\r\n## Partial blocks for write allowed ##");
+	}
+	temp_ccc = sd_cardinfo.card_csd.ccc;
+	printf("\r\n## CardCommandClasses is: %x ##", temp_ccc);
+	if ((SD_CCC_BLOCK_READ & temp_ccc) && (SD_CCC_BLOCK_WRITE & temp_ccc))
+	{
+		printf("\r\n## Block operation supported ##");
+	}
+	if (SD_CCC_ERASE & temp_ccc)
+	{
+		printf("\r\n## Erase supported ##");
+	}
+	if (SD_CCC_WRITE_PROTECTION & temp_ccc)
+	{
+		printf("\r\n## Write protection supported ##");
+	}
+	if (SD_CCC_LOCK_CARD & temp_ccc)
+	{
+		printf("\r\n## Lock unlock supported ##");
+	}
+	if (SD_CCC_APPLICATION_SPECIFIC & temp_ccc)
+	{
+		printf("\r\n## Application specific supported ##");
+	}
+	if (SD_CCC_IO_MODE & temp_ccc)
+	{
+		printf("\r\n## I/O mode supported ##");
+	}
+	if (SD_CCC_SWITCH & temp_ccc)
+	{
+		printf("\r\n## Switch function supported ##");
+	}
+}
+
+
+
+/*!
+    \brief      configure the bus width mode
+    \param[in]  buswidth: the bus width
+      \arg        SD_BUS_WIDTH_1BIT: 1-bit bus width
+      \arg        SD_BUS_WIDTH_4BIT: 4-bit bus width
+    \param[out] none
+    \retval     sd_error_enum
+*/
+static sd_error_enum sd_bus_width_config(uint32_t buswidth)
+{
+    sd_error_enum status = SD_OK;
+    /* check whether the card is locked */
+    if(sdio_response_get(SDIO_RESPONSE0) & SD_CARDSTATE_LOCKED){
+        status = SD_LOCK_UNLOCK_FAILED;
+        return status;
+    }
+    /* get the SCR register */
+    status = sd_scr_get(sd_rca, sd_scr);
+    if(SD_OK != status){
+        return status;
+    }
+    
+    if(SD_BUS_WIDTH_1BIT == buswidth){
+        if(SD_ALLZERO != (sd_scr[1] & buswidth)){
+            /* send CMD55(APP_CMD) to indicate next command is application specific command */
+            sdio_command_response_config(SD_CMD_APP_CMD, (uint32_t)sd_rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+            sdio_wait_type_set(SDIO_WAITTYPE_NO);
+            sdio_csm_enable();
+            /* check if some error occurs */
+            status = r1_error_check(SD_CMD_APP_CMD);
+            if(SD_OK != status){
+                return status;
+            }
+            
+            /* send ACMD6(SET_BUS_WIDTH) to define the data bus width */
+            sdio_command_response_config(SD_APPCMD_SET_BUS_WIDTH, (uint32_t)0x0, SDIO_RESPONSETYPE_SHORT);
+            sdio_wait_type_set(SDIO_WAITTYPE_NO);
+            sdio_csm_enable();
+            /* check if some error occurs */
+            status = r1_error_check(SD_APPCMD_SET_BUS_WIDTH);
+            if(SD_OK != status){
+                return status;
+            }
+        }else{
+            status = SD_OPERATION_IMPROPER;
+        }
+        return status;
+    }else if(SD_BUS_WIDTH_4BIT == buswidth){
+        if(SD_ALLZERO != (sd_scr[1] & buswidth)){
+            /* send CMD55(APP_CMD) to indicate next command is application specific command */
+            sdio_command_response_config(SD_CMD_APP_CMD, (uint32_t)sd_rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+            sdio_wait_type_set(SDIO_WAITTYPE_NO);
+            sdio_csm_enable();
+            /* check if some error occurs */
+            status = r1_error_check(SD_CMD_APP_CMD);
+            if(SD_OK != status){
+                return status;
+            }
+            
+            /* send ACMD6(SET_BUS_WIDTH) to define the data bus width */
+            sdio_command_response_config(SD_APPCMD_SET_BUS_WIDTH, (uint32_t)0x2, SDIO_RESPONSETYPE_SHORT);
+            sdio_wait_type_set(SDIO_WAITTYPE_NO);
+            sdio_csm_enable();
+            /* check if some error occurs */
+            status = r1_error_check(SD_APPCMD_SET_BUS_WIDTH);
+            if(SD_OK != status){
+                return status;
+            }
+        }else{
+            status = SD_OPERATION_IMPROPER;
+        }
+        return status;
+    }else{
+        status = SD_PARAMETER_INVALID;
+        return status;
+    }
+}
+
+
+/*!
+    \brief      get the SCR of corresponding card
+    \param[in]  rca: RCA of a card
+    \param[out] pscr: a pointer that store the SCR content
+    \retval     sd_error_enum
+*/
+static sd_error_enum sd_scr_get(uint16_t rca, uint32_t *pscr)
+{
+    sd_error_enum status = SD_OK;
+    uint32_t temp_scr[2] = {0, 0}, idx_scr = 0;
+    /* send CMD16(SET_BLOCKLEN) to set block length */
+    sdio_command_response_config(SD_CMD_SET_BLOCKLEN, (uint32_t)8, SDIO_RESPONSETYPE_SHORT);
+    sdio_wait_type_set(SDIO_WAITTYPE_NO);
+    /* check if some error occurs */
+    status = r1_error_check(SD_CMD_SET_BLOCKLEN);
+    if(SD_OK != status){
+        return status;
+    }
+    
+    /* send CMD55(APP_CMD) to indicate next command is application specific command */
+    sdio_command_response_config(SD_CMD_APP_CMD, (uint32_t)rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+    sdio_wait_type_set(SDIO_WAITTYPE_NO);
+    sdio_csm_enable();
+    /* check if some error occurs */
+    status = r1_error_check(SD_CMD_APP_CMD);
+    if(SD_OK != status){
+        return status;
+    }
+    
+    /* configure SDIO data */
+    sdio_data_config(SD_DATATIMEOUT, (uint32_t)8, SDIO_DATABLOCKSIZE_8BYTES);
+    sdio_data_transfer_config(SDIO_TRANSMODE_BLOCK, SDIO_TRANSDIRECTION_TOSDIO);
+    sdio_dsm_enable();
+    
+    /* send ACMD51(SEND_SCR) to read the SD configuration register */
+    sdio_command_response_config(SD_APPCMD_SEND_SCR, (uint32_t)0x0, SDIO_RESPONSETYPE_SHORT);
+    sdio_wait_type_set(SDIO_WAITTYPE_NO);
+    sdio_csm_enable();
+    /* check if some error occurs */
+    status = r1_error_check(SD_APPCMD_SEND_SCR);
+    if(SD_OK != status){
+        return status;
+    }
+    
+    /* store the received SCR */
+    while(!sdio_flag_get(SDIO_FLAG_DTCRCERR | SDIO_FLAG_DTTMOUT | SDIO_FLAG_RXORE | SDIO_FLAG_DTBLKEND | SDIO_FLAG_STBITE)){
+        if(RESET != sdio_flag_get(SDIO_FLAG_RXDTVAL)){
+            *(temp_scr + idx_scr) = sdio_data_read();
+            ++idx_scr;
+        }
+    }
+    
+    /* check whether some error occurs */
+    if(RESET != sdio_flag_get(SDIO_FLAG_DTCRCERR)){
+        status = SD_DATA_CRC_ERROR;
+        sdio_flag_clear(SDIO_FLAG_DTCRCERR);
+        return status;
+    }else if(RESET != sdio_flag_get(SDIO_FLAG_DTTMOUT)){
+        status = SD_DATA_TIMEOUT;
+        sdio_flag_clear(SDIO_FLAG_DTTMOUT);
+        return status;
+    }else if(RESET != sdio_flag_get(SDIO_FLAG_RXORE)){
+        status = SD_RX_OVERRUN_ERROR;
+        sdio_flag_clear(SDIO_FLAG_RXORE);
+        return status;
+    }else if(RESET != sdio_flag_get(SDIO_FLAG_STBITE)){
+        status = SD_START_BIT_ERROR;
+        sdio_flag_clear(SDIO_FLAG_STBITE);
+        return status;
+    }
+    
+    /* clear all the SDIO_INTC flags */
+    sdio_flag_clear(SDIO_MASK_INTC_FLAGS);
+    /* readjust the temp SCR value */
+    *(pscr) = ((temp_scr[1] & SD_MASK_0_7BITS) << 24) | ((temp_scr[1] & SD_MASK_8_15BITS) << 8) | 
+                ((temp_scr[1] & SD_MASK_16_23BITS) >> 8) | ((temp_scr[1] & SD_MASK_24_31BITS) >> 24);
+    *(pscr + 1) = ((temp_scr[0] & SD_MASK_0_7BITS) << 24) | ((temp_scr[0] & SD_MASK_8_15BITS) << 8) | 
+                ((temp_scr[0] & SD_MASK_16_23BITS) >> 8) | ((temp_scr[0] & SD_MASK_24_31BITS) >> 24);
+    return status;
+}
+
+
+/*!
+    \brief      configure the mode of transmission
+    \param[in]  txmode: transfer mode
+      \arg        SD_DMA_MODE: DMA mode
+      \arg        SD_POLLING_MODE: polling mode
+    \param[out] none
+    \retval     sd_error_enum
+*/
+sd_error_enum sd_transfer_mode_config(uint32_t txmode)
+{
+    sd_error_enum status = SD_OK;
+    /* set the transfer mode */
+    if((SD_DMA_MODE == txmode) || (SD_POLLING_MODE == txmode)){
+        transmode = txmode;
+    }else{
+        status = SD_PARAMETER_INVALID;
+    }
+    return status;
+}
+
+
+
+
+
+/*!
+    \brief      get SD card capacity
+    \param[in]  none
+    \param[out] none
+    \retval     capacity of the card(KB)
+*/
+uint32_t sd_card_capacity_get(void)
+{
+    uint8_t tempbyte = 0, devicesize_mult = 0, readblklen = 0;
+    uint32_t capacity = 0, devicesize = 0;
+    if((SDIO_STD_CAPACITY_SD_CARD_V1_1 == cardtype) || (SDIO_STD_CAPACITY_SD_CARD_V2_0 == cardtype)){
+        /* calculate the c_size(device size) */
+        tempbyte = (uint8_t)((sd_csd[1] & SD_MASK_8_15BITS) >> 8);
+        devicesize = (uint32_t)((uint32_t)(tempbyte & 0x03) << 10);
+        tempbyte = (uint8_t)(sd_csd[1] & SD_MASK_0_7BITS);
+        devicesize |= (uint32_t)((uint32_t)tempbyte << 2);
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_24_31BITS) >> 24);
+        devicesize |= (uint32_t)((uint32_t)(tempbyte & 0xC0) >> 6);
+        
+        /* calculate the c_size_mult(device size multiplier) */
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_16_23BITS) >> 16);
+        devicesize_mult = (tempbyte & 0x03) << 1;
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_8_15BITS) >> 8);
+        devicesize_mult |= (tempbyte & 0x80) >> 7;
+
+        /* calculate the read_bl_len */
+        tempbyte = (uint8_t)((sd_csd[1] & SD_MASK_16_23BITS) >> 16);
+        readblklen = tempbyte & 0x0F;
+        
+        /* capacity = BLOCKNR*BLOCK_LEN, BLOCKNR = (C_SIZE+1)*MULT, MULT = 2^(C_SIZE_MULT+2), BLOCK_LEN = 2^READ_BL_LEN */
+        capacity = (devicesize + 1)*(1 << (devicesize_mult + 2));
+        capacity *= (1 << readblklen);
+        
+        /* change the unit of capacity to KByte */
+        capacity /= 1024;
+    }else if(SDIO_HIGH_CAPACITY_SD_CARD == cardtype){
+        /* calculate the c_size */
+        tempbyte = (uint8_t)(sd_csd[1] & SD_MASK_0_7BITS);
+        devicesize = (uint32_t)((uint32_t)(tempbyte & 0x3F) << 16);
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_24_31BITS) >> 24);
+        devicesize |= (uint32_t)((uint32_t)tempbyte << 8);
+        tempbyte = (uint8_t)((sd_csd[2] & SD_MASK_16_23BITS) >> 16);
+        devicesize |= (uint32_t)tempbyte;
+        
+        /* capacity = (c_size+1)*512KByte */
+        capacity = (devicesize + 1)*512;
+    }
+    return capacity;
+}
+
+
+
+
+
+
+
+// /*!
+//     \brief      write a block data to the specified address of a card
+//     \param[in]  pwritebuffer: a pointer that store a block data to be transferred
+//     \param[in]  writeaddr: the read data address
+//     \param[in]  blocksize: the data block size
+//     \param[out] none
+//     \retval     sd_error_enum
+// */
+// sd_error_enum sd_block_write(uint32_t *pwritebuffer, uint32_t writeaddr, uint16_t blocksize)
+// {
+//     /* initialize the variables */
+//     sd_error_enum status = SD_OK;
+//     uint8_t cardstate = 0;
+//     uint32_t count = 0, align = 0, datablksize = SDIO_DATABLOCKSIZE_1BYTE, *ptempbuff = pwritebuffer;
+//     uint32_t transbytes = 0, restwords = 0, response = 0;
+//     __IO uint32_t timeout = 0;
+
+//     if(NULL == pwritebuffer){
+//         status = SD_PARAMETER_INVALID;
+//         return status;
+//     }
+    
+//     transerror = SD_OK;
+//     transend = 0;
+//     totalnumber_bytes = 0;
+//     /* clear all DSM configuration */
+//     sdio_data_config(0, 0, SDIO_DATABLOCKSIZE_1BYTE);
+//     sdio_data_transfer_config(SDIO_TRANSMODE_BLOCK, SDIO_TRANSDIRECTION_TOCARD);
+//     sdio_dsm_disable();
+//     sdio_dma_disable();
+    
+//     /* check whether the card is locked */
+//     if(sdio_response_get(SDIO_RESPONSE0) & SD_CARDSTATE_LOCKED){
+//         status = SD_LOCK_UNLOCK_FAILED;
+//         return status;
+//     }
+    
+//     /* blocksize is fixed in 512B for SDHC card */
+//     if(SDIO_HIGH_CAPACITY_SD_CARD == cardtype){
+//         blocksize = 512;
+//         writeaddr /= 512;
+//     }
+    
+//     align = blocksize & (blocksize - 1);
+//     if((blocksize > 0) && (blocksize <= 2048) && (0 == align)){
+//         datablksize = sd_datablocksize_get(blocksize);
+//         /* send CMD16(SET_BLOCKLEN) to set the block length */
+//         sdio_command_response_config(SD_CMD_SET_BLOCKLEN, (uint32_t)blocksize, SDIO_RESPONSETYPE_SHORT);
+//         sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//         sdio_csm_enable();
+        
+//         /* check if some error occurs */
+//         status = r1_error_check(SD_CMD_SET_BLOCKLEN);
+//         if(SD_OK != status){
+//             return status;
+//         }
+//     }else{
+//         status = SD_PARAMETER_INVALID;
+//         return status;
+//     }
+    
+//     /* send CMD13(SEND_STATUS), addressed card sends its status registers */
+//     sdio_command_response_config(SD_CMD_SEND_STATUS, (uint32_t)sd_rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+//     sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//     sdio_csm_enable();
+//     /* check if some error occurs */
+//     status = r1_error_check(SD_CMD_SEND_STATUS);
+//     if(SD_OK != status){
+//         return status;
+//     }
+    
+//     response = sdio_response_get(SDIO_RESPONSE0);
+//     timeout = 100000;
+
+//     while((0 == (response & SD_R1_READY_FOR_DATA)) && (timeout > 0)){
+//         /* continue to send CMD13 to polling the state of card until buffer empty or timeout */
+//         --timeout;
+//         /* send CMD13(SEND_STATUS), addressed card sends its status registers */
+//         sdio_command_response_config(SD_CMD_SEND_STATUS, (uint32_t)sd_rca << SD_RCA_SHIFT, SDIO_RESPONSETYPE_SHORT);
+//         sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//         sdio_csm_enable();
+//         /* check if some error occurs */
+//         status = r1_error_check(SD_CMD_SEND_STATUS);
+//         if(SD_OK != status){
+//             return status;
+//         }
+//         response = sdio_response_get(SDIO_RESPONSE0);
+//     }
+//     if(0 == timeout){
+//         return SD_ERROR;
+//     }
+    
+//     /* send CMD24(WRITE_BLOCK) to write a block */
+//     sdio_command_response_config(SD_CMD_WRITE_BLOCK, writeaddr, SDIO_RESPONSETYPE_SHORT);
+//     sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//     sdio_csm_enable();
+//     /* check if some error occurs */
+//     status = r1_error_check(SD_CMD_WRITE_BLOCK);
+//     if(SD_OK != status){
+//         return status;
+//     }
+    
+//     stopcondition = 0;
+//     totalnumber_bytes = blocksize;
+    
+//     /* configure the SDIO data transmission */
+//     sdio_data_config(SD_DATATIMEOUT, totalnumber_bytes, datablksize);
+//     sdio_data_transfer_config(SDIO_TRANSMODE_BLOCK, SDIO_TRANSDIRECTION_TOCARD);
+//     sdio_dsm_enable();
+    
+//     if(SD_POLLING_MODE == transmode){
+//         /* polling mode */
+//         while(!sdio_flag_get(SDIO_FLAG_DTCRCERR | SDIO_FLAG_DTTMOUT | SDIO_FLAG_TXURE | SDIO_FLAG_DTBLKEND | SDIO_FLAG_STBITE)){
+//             if(RESET != sdio_flag_get(SDIO_FLAG_TFH)){
+//                 /* at least 8 words can be written into the FIFO */
+//                 if((totalnumber_bytes - transbytes) < SD_FIFOHALF_BYTES){
+//                     restwords = (totalnumber_bytes - transbytes)/4 + (((totalnumber_bytes - transbytes)%4 == 0) ? 0 : 1);
+//                     for(count = 0; count < restwords; count++){
+//                         sdio_data_write(*ptempbuff);
+//                         ++ptempbuff;
+//                         transbytes += 4;
+//                     }
+//                 }else{
+//                     for(count = 0; count < SD_FIFOHALF_WORDS; count++){
+//                         sdio_data_write(*(ptempbuff + count));
+//                     }
+//                     /* 8 words(32 bytes) has been transferred */
+//                     ptempbuff += SD_FIFOHALF_WORDS;
+//                     transbytes += SD_FIFOHALF_BYTES;
+//                 }
+//             }
+//         }
+        
+//         /* whether some error occurs and return it */
+//         if(RESET != sdio_flag_get(SDIO_FLAG_DTCRCERR)){
+//             status = SD_DATA_CRC_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_DTCRCERR);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_DTTMOUT)){
+//             status = SD_DATA_TIMEOUT;
+//             sdio_flag_clear(SDIO_FLAG_DTTMOUT);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_TXURE)){
+//             status = SD_TX_UNDERRUN_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_TXURE);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_STBITE)){
+//             status = SD_START_BIT_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_STBITE);
+//             return status;
+//         }
+//     }else if(SD_DMA_MODE == transmode){
+//         /* DMA mode */
+//         /* enable the SDIO corresponding interrupts and DMA */
+//         sdio_interrupt_enable(SDIO_INT_DTCRCERR | SDIO_INT_DTTMOUT | SDIO_INT_TXURE | SDIO_INT_DTEND | SDIO_INT_STBITE);
+//         dma_transfer_config(pwritebuffer, blocksize);
+//         sdio_dma_enable();
+        
+//         timeout = 100000;
+//         while((RESET == dma_flag_get(DMA1, DMA_CH3, DMA_FLAG_FTF)) && (timeout > 0)){
+//             timeout--;
+//             if(0 == timeout){
+//                 return SD_ERROR;
+//             }
+//         }
+//         while ((0 == transend) && (SD_OK == transerror)){
+//         }
+
+//         if(SD_OK != transerror){
+//             return transerror;
+//         }
+//     }else{
+//         status = SD_PARAMETER_INVALID;
+//         return status;
+//     }
+    
+//     /* clear the SDIO_INTC flags */
+//     sdio_flag_clear(SDIO_MASK_INTC_FLAGS);
+//     /* get the card state and wait the card is out of programming and receiving state */
+//     status = sd_card_state_get(&cardstate);
+//     while((SD_OK == status) && ((SD_CARDSTATE_PROGRAMMING == cardstate) || (SD_CARDSTATE_RECEIVING == cardstate))){
+//         status = sd_card_state_get(&cardstate);
+//     }
+//     return status;
+// }
+
+
+// /*!
+//     \brief      read a block data into a buffer from the specified address of a card
+//     \param[out] preadbuffer: a pointer that store a block read data
+//     \param[in]  readaddr: the read data address
+//     \param[in]  blocksize: the data block size
+//     \retval     sd_error_enum
+// */
+// sd_error_enum sd_block_read(uint32_t *preadbuffer, uint32_t readaddr, uint16_t blocksize)
+// {
+//     /* initialize the variables */
+//     sd_error_enum status = SD_OK;
+//     uint32_t count = 0, align = 0, datablksize = SDIO_DATABLOCKSIZE_1BYTE, *ptempbuff = preadbuffer;
+//     __IO uint32_t timeout = 0;
+
+//     if(NULL == preadbuffer){
+//         status = SD_PARAMETER_INVALID;
+//         return status;
+//     }
+    
+//     transerror = SD_OK;
+//     transend = 0;
+//     totalnumber_bytes = 0;
+//     /* clear all DSM configuration */
+//     sdio_data_config(0, 0, SDIO_DATABLOCKSIZE_1BYTE);
+//     sdio_data_transfer_config(SDIO_TRANSMODE_BLOCK, SDIO_TRANSDIRECTION_TOCARD);
+//     sdio_dsm_disable();
+//     sdio_dma_disable();
+    
+//     /* check whether the card is locked */
+//     if(sdio_response_get(SDIO_RESPONSE0) & SD_CARDSTATE_LOCKED){
+//         status = SD_LOCK_UNLOCK_FAILED;
+//         return status;
+//     }
+    
+//     /* blocksize is fixed in 512B for SDHC card */
+//     if(SDIO_HIGH_CAPACITY_SD_CARD == cardtype){
+//         blocksize = 512;
+//         readaddr /= 512;
+//     }
+    
+//     align = blocksize & (blocksize - 1);
+//     if((blocksize > 0) && (blocksize <= 2048) && (0 == align)){
+//         datablksize = sd_datablocksize_get(blocksize);
+//         /* send CMD16(SET_BLOCKLEN) to set the block length */
+//         sdio_command_response_config(SD_CMD_SET_BLOCKLEN, (uint32_t)blocksize, SDIO_RESPONSETYPE_SHORT);
+//         sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//         sdio_csm_enable();
+        
+//         /* check if some error occurs */
+//         status = r1_error_check(SD_CMD_SET_BLOCKLEN);
+//         if(SD_OK != status){
+//             return status;
+//         }
+//     }else{
+//         status = SD_PARAMETER_INVALID;
+//         return status;
+//     }
+    
+//     stopcondition = 0;
+//     totalnumber_bytes = blocksize;
+    
+//     /* configure SDIO data transmission */
+//     sdio_data_config(SD_DATATIMEOUT, totalnumber_bytes, datablksize);
+//     sdio_data_transfer_config(SDIO_TRANSMODE_BLOCK, SDIO_TRANSDIRECTION_TOSDIO);
+//     sdio_dsm_enable();
+    
+//     /* send CMD17(READ_SINGLE_BLOCK) to read a block */
+//     sdio_command_response_config(SD_CMD_READ_SINGLE_BLOCK, (uint32_t)readaddr, SDIO_RESPONSETYPE_SHORT);
+//     sdio_wait_type_set(SDIO_WAITTYPE_NO);
+//     sdio_csm_enable();
+//     /* check if some error occurs */
+//     status = r1_error_check(SD_CMD_READ_SINGLE_BLOCK);
+//     if(SD_OK != status){
+//         return status;
+//     }
+    
+//     if(SD_POLLING_MODE == transmode){
+//         /* polling mode */
+//         while(!sdio_flag_get(SDIO_FLAG_DTCRCERR | SDIO_FLAG_DTTMOUT | SDIO_FLAG_RXORE | SDIO_FLAG_DTBLKEND | SDIO_FLAG_STBITE)){
+//             if(RESET != sdio_flag_get(SDIO_FLAG_RFH)){
+//                 /* at least 8 words can be read in the FIFO */
+//                 for(count = 0; count < SD_FIFOHALF_WORDS; count++){
+//                     *(ptempbuff + count) = sdio_data_read();
+//                 }
+//                 ptempbuff += SD_FIFOHALF_WORDS;
+//             }
+//         }
+        
+//         /* whether some error occurs and return it */
+//         if(RESET != sdio_flag_get(SDIO_FLAG_DTCRCERR)){
+//             status = SD_DATA_CRC_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_DTCRCERR);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_DTTMOUT)){
+//             status = SD_DATA_TIMEOUT;
+//             sdio_flag_clear(SDIO_FLAG_DTTMOUT);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_RXORE)){
+//             status = SD_RX_OVERRUN_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_RXORE);
+//             return status;
+//         }else if(RESET != sdio_flag_get(SDIO_FLAG_STBITE)){
+//             status = SD_START_BIT_ERROR;
+//             sdio_flag_clear(SDIO_FLAG_STBITE);
+//             return status;
+//         }
+//         while(RESET != sdio_flag_get(SDIO_FLAG_RXDTVAL)){
+//             *ptempbuff = sdio_data_read();
+//             ++ptempbuff;
+//         }
+//         /* clear the SDIO_INTC flags */
+//         sdio_flag_clear(SDIO_MASK_INTC_FLAGS);
+//     }else if(SD_DMA_MODE == transmode){
+//         /* DMA mode */
+//         /* enable the SDIO corresponding interrupts and DMA function */
+//         sdio_interrupt_enable(SDIO_INT_CCRCERR | SDIO_INT_DTTMOUT | SDIO_INT_RXORE | SDIO_INT_DTEND | SDIO_INT_STBITE);
+//         sdio_dma_enable();
+//         dma_receive_config(preadbuffer, blocksize);
+//         timeout = 100000;
+//         while((RESET == dma_flag_get(DMA1, DMA_CH3, DMA_FLAG_FTF)) && (timeout > 0)){
+//             timeout--;
+//             if(0 == timeout){
+//                 return SD_ERROR;
+//             }
+//         }
+//     }else{
+//         status = SD_PARAMETER_INVALID;
+//     }
+//     return status;
+// }
+
+

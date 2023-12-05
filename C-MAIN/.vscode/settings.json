@@ -1,4 +1,9 @@
 {
     "workbench.settings.useSplitJSON": false,
-    "json.schemas": []
+    "json.schemas": [],
+    "files.associations": {
+        "memory": "c",
+        "string": "c",
+        "vector": "c"
+    }
 }

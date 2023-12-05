@@ -29,12 +29,13 @@
  --------------------------------  说明 结束   -------------------------------*/
  
  /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~  #INCLUDE BEGIN   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
- #include "parameter.h"
+// #include "parameter.h"
  #include "LCD_Display.h"
- #include "TIME_Management.h"
+// #include "TIME_Management.h"
  #include "LCD.h"
- #include "Key_Board.h"
+// #include "Key_Board.h"
  #include "GPIO.h"
+ #include <math.h>
  /*-----------------------------  #INCLUDE   END   ----------------------------*/
  
  /*~~~~~~~~~~~~~~~~~~~~~~~~~  DECLARE VARIABLE BEGIN   ~~~~~~~~~~~~~~~~~~~~~~~~*/
@@ -54,6 +55,74 @@ char Virtual_Keyboard_4_row[10]={'Z','X','C','V','B','N','M',',','.','/'};
  /*---------------------  REPEAT DECLARE  VARIABLE  END   ---------------------*/
  
 
+
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <brief>
+ * @note     : <临时借用的一个函数，借用显示屏用来打印出测试过程数据
+ * 				这里计划用24号字，总行数是172，那就是7行，>
+ * @param    : <param>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+void Print_my(const u8 *p,u16 row)
+{
+	LCD_ShowString(0,24*(row-1),p,BLACK,LGRAY,24,1);
+}
+
+/*********************************************************************
+ * @fn       : <function_name/函数名>
+ * @brief    : <brief>
+ * @note     : <更高级的一个输出打印函数>
+ * @param    : <param>
+ * @return   : <return>
+ * @author   : <editor>
+ * @date     : 
+ ********************************************************************/
+void Print_my_2(u16 x,u16 y,const u8 *p,u32 num,u8 len,u16 row)
+{
+	u8 i=1;
+	while(*p!='\0')
+	{       
+		if((*p=='%')&&(*(p+1)=='d'))
+		{
+			print_figure(x,24*(row-1),num,len,24);
+			x+=(12*len);
+			p+=2;
+			
+		}
+		else
+		{
+			LCD_ShowChar(x,24*(row-1),*p,BLACK,LGRAY,24,1);
+			x+=12;
+			p++;
+		}
+	} 
+}
+
+void print_figure(u16 x,u16 y,u32 num,u8 len,u8 size )
+{
+	u8 temp=0,m=0;
+	u8 i=0;
+	u8 enshow=0;
+	for (i=len;i>0;i--)		//一共有10位
+	{
+		// q=pow(10,i);
+		// w=num%q;
+		// e=(u32)pow(10,i-1);
+		// r=(u32)(w/e);	
+		temp=(num%((u32)pow(10,i)))/((u32)pow(10,i-1))  ;			//获取当前需要表达的数字值
+		LCD_ShowChar(x,y,temp+48,BLACK,LGRAY,24,1);
+		x+=size/2;
+
+	}
+}
+
+
+
+
 /*********************************************************************
  * @fn       : <function_name/函数名>
  * @brief    : <brief>
@@ -63,13 +132,13 @@ char Virtual_Keyboard_4_row[10]={'Z','X','C','V','B','N','M',',','.','/'};
  * @author   : <editor>
  * @date     : 
  ********************************************************************/
-void SPI1_DMA_Send(u16 data_size)
-{
-		SPI_I2S_DMACmd(SPI1,SPI_I2S_DMAReq_Tx,ENABLE);     //使能SPI1的DMA发送功能
-		DMA_Cmd(DMA1_Channel3,DISABLE);       //关闭对应的dma通道
-		DMA_SetCurrDataCounter(DMA1_Channel3,data_size);     //设置DMA传输的相关参数，DMA通道和数据数目
-		DMA_Cmd(DMA1_Channel3, ENABLE);   //开启发送
-}
+//void SPI1_DMA_Send(u16 data_size)
+//{
+//		SPI_I2S_DMACmd(SPI1,SPI_I2S_DMAReq_Tx,ENABLE);     //使能SPI1的DMA发送功能
+//		DMA_Cmd(DMA1_Channel3,DISABLE);       //关闭对应的dma通道
+//		DMA_SetCurrDataCounter(DMA1_Channel3,data_size);     //设置DMA传输的相关参数，DMA通道和数据数目
+//		DMA_Cmd(DMA1_Channel3, ENABLE);   //开启发送
+//}
 
 
 
@@ -84,35 +153,35 @@ void SPI1_DMA_Send(u16 data_size)
  * @author   : <editor>
  * @date     : 
  ********************************************************************/
-u8 Refresh_Screen(u16 y_coordinate)
-{
-	u8 i=0,j=0;
-	u16 k=0;
-	static u16 run=0;
-	for(i=y_coordinate;i<55+y_coordinate;i+=10)
-	{
-		for(j=0;j<10;j++)
-		{
-			for (k=0;k<320;k++)
-			{
-//				if(color==0xffff)
-//					color=0x0000;
-//				IPS_LCD_Cahe_Data[j][k]=((u16)gImage_3445[(i-y_coordinate+1)*(k+1)*2-2]<<8)+((u16)gImage_3445[(i-y_coordinate+1)*(k+1)*2-1]);
-			}
-		}
-		LCD_Address_Set(0,i,319,i+9);  //设置位置 
-		CS_L;
-		DATA_ORDER;        //因为要传输数据，所以要让RS和CS进行相应的配置。
-		SPI1_DMA_Send(10*320*2);
-		while(DMA_GetFlagStatus(DMA1_FLAG_TC3)==RESET)
-		{
-		}
-		DMA_ClearFlag(DMA1_FLAG_TC3);
-		run++;
-	}
-		
-	return 0;  
-}
+//u8 Refresh_Screen(u16 y_coordinate)
+//{
+//	u8 i=0,j=0;
+//	u16 k=0;
+//	static u16 run=0;
+//	for(i=y_coordinate;i<55+y_coordinate;i+=10)
+//	{
+//		for(j=0;j<10;j++)
+//		{
+//			for (k=0;k<320;k++)
+//			{
+////				if(color==0xffff)
+////					color=0x0000;
+////				IPS_LCD_Cahe_Data[j][k]=((u16)gImage_3445[(i-y_coordinate+1)*(k+1)*2-2]<<8)+((u16)gImage_3445[(i-y_coordinate+1)*(k+1)*2-1]);
+//			}
+//		}
+//		LCD_Address_Set(0,i,319,i+9);  //设置位置 
+//		CS_L;
+//		DATA_ORDER;        //因为要传输数据，所以要让RS和CS进行相应的配置。
+//		SPI1_DMA_Send(10*320*2);
+//		while(DMA_GetFlagStatus(DMA1_FLAG_TC3)==RESET)
+//		{
+//		}
+//		DMA_ClearFlag(DMA1_FLAG_TC3);
+//		run++;
+//	}
+//		
+//	return 0;  
+//}
  
 /*********************************************************************
  * @fn       : <function_name/函数名>
@@ -124,39 +193,39 @@ u8 Refresh_Screen(u16 y_coordinate)
  * @author   : <editor>
  * @date     : 
  ********************************************************************/
-void Status_bar(void )
-{
-//	LCD_Fill(0,0,320,24,LGRAY);
-	//time hour
-	if(Refresh_Display_time_flg)
-	{
-		Refresh_Display_time_flg=0;
-		
-		LCD_ShowChar(12,0,0x30+g_Hour/10,BLACK,LGRAY,24,0);
-		LCD_ShowChar(24,0,0x30+g_Hour%10,BLACK,LGRAY,24,0);
-		//:
-		LCD_ShowChar(36,0,':',BLACK,LGRAY,24,0);
-		//minute
-		LCD_ShowChar(48,0,0x30+g_Minute/10,BLACK,LGRAY,24,0);
-		LCD_ShowChar(60,0,0x30+g_Minute%10,BLACK,LGRAY,24,0);
-		
-		//:
-		LCD_ShowChar(72,0,':',BLACK,LGRAY,24,0);
-		//second
-		LCD_ShowChar(84,0,0x30+g_Second/10,BLACK,LGRAY,24,0);
-		LCD_ShowChar(96,0,0x30+g_Second%10,BLACK,LGRAY,24,0);
-		
-		if(g_Wifi_line)
-		{
-			LCD_Show_ICON(272,0,Wifi_Line,BLACK,LGRAY,24,0);
-		}
-		else
-		{
-			LCD_Show_ICON(272,0,Wifi_no_Line,BLACK,LGRAY,24,0);
-		}
-	}		
-	
-}
+//void Status_bar(void )
+//{
+////	LCD_Fill(0,0,320,24,LGRAY);
+//	//time hour
+//	if(Refresh_Display_time_flg)
+//	{
+//		Refresh_Display_time_flg=0;
+//		
+//		LCD_ShowChar(12,0,0x30+g_Hour/10,BLACK,LGRAY,24,0);
+//		LCD_ShowChar(24,0,0x30+g_Hour%10,BLACK,LGRAY,24,0);
+//		//:
+//		LCD_ShowChar(36,0,':',BLACK,LGRAY,24,0);
+//		//minute
+//		LCD_ShowChar(48,0,0x30+g_Minute/10,BLACK,LGRAY,24,0);
+//		LCD_ShowChar(60,0,0x30+g_Minute%10,BLACK,LGRAY,24,0);
+//		
+//		//:
+//		LCD_ShowChar(72,0,':',BLACK,LGRAY,24,0);
+//		//second
+//		LCD_ShowChar(84,0,0x30+g_Second/10,BLACK,LGRAY,24,0);
+//		LCD_ShowChar(96,0,0x30+g_Second%10,BLACK,LGRAY,24,0);
+//		
+//		if(g_Wifi_line)
+//		{
+//			LCD_Show_ICON(272,0,Wifi_Line,BLACK,LGRAY,24,0);
+//		}
+//		else
+//		{
+//			LCD_Show_ICON(272,0,Wifi_no_Line,BLACK,LGRAY,24,0);
+//		}
+//	}		
+//	
+//}
 
 /*********************************************************************
  * @fn       : <function_name/函数名>
@@ -168,30 +237,30 @@ void Status_bar(void )
  * @author   : <editor>
  * @date     : 
  ********************************************************************/
-void Show_Rocker(u16 fc,u16 bc)
-{
-	u8 i=0,j=0;
-	u8 x=0,y=0;
-	x=(u8)(X_AXIS_Joystick.Analog_quantity*80/4095);
-	y=(u8)(Y_AXIS_Joystick.Analog_quantity*80/4095);
-	
-	LCD_Address_Set(0,72,100-1,172-1);  //设置光标位置
-	for(i=0;i<100;i++)
-	{
-		for(j=0;j<100;j++)
-		{
-			if((j>=(x-10))&&(j<=(x+10))&&(i>=(y-10))&&(i<=(y+10)))
-			{
-				LCD_Send_Word_Data(fc);
-			}
-			else
-			{
-				LCD_Send_Word_Data(bc);
-			}
-			
-		}
-	}
-}
+//void Show_Rocker(u16 fc,u16 bc)
+//{
+//	u8 i=0,j=0;
+//	u8 x=0,y=0;
+//	x=(u8)(X_AXIS_Joystick.Analog_quantity*80/4095);
+//	y=(u8)(Y_AXIS_Joystick.Analog_quantity*80/4095);
+//	
+//	LCD_Address_Set(0,72,100-1,172-1);  //设置光标位置
+//	for(i=0;i<100;i++)
+//	{
+//		for(j=0;j<100;j++)
+//		{
+//			if((j>=(x-10))&&(j<=(x+10))&&(i>=(y-10))&&(i<=(y+10)))
+//			{
+//				LCD_Send_Word_Data(fc);
+//			}
+//			else
+//			{
+//				LCD_Send_Word_Data(bc);
+//			}
+//			
+//		}
+//	}
+//}
 /*********************************************************************
  * @fn       : <LCD_Show_Virtual_Key/函数名>
  * @brief    : <显示一个虚拟按键>

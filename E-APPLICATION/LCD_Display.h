@@ -47,6 +47,9 @@
  u8 Refresh_Screen(u16 y_coordinate);
  void Virtual_Keyboard(u8 flg,u8 row,u8 cllow);
  void LCD_Show_Virtual_Key(u16 x,u16 y,u8 num,u16 fc,u16 bc,u16 shadow,u8 sizey,u8 mode);
+ void Print_my(const u8 *p,u16 row);
+ void Print_my_2(u16 x,u16 y,const u8 *p,u32 num,u8 len,u16 row);
+ void print_figure(u16 x,u16 y,u32 num,u8 len,u8 size );
  /*-------------------------  DECLARE FUNCTION  END   -------------------------*/
  
  
